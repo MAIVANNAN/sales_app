@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.addArea">
+
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/Aname_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="84dp"
+        app:errorEnabled="true">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/addAreaName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Area Name"
+            android:inputType="text"
+            android:maxLines="1" />
+    </android.support.design.widget.TextInputLayout>
+
+    <Button
+        android:id="@+id/btnAddArea"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="209dp"
+        android:text="Add Area" />
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/Ar_id"
+        android:layout_width="match_parent"
+        android:layout_height="89dp"
+        android:layout_below="@+id/Aname_label"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="31dp">
+
+    </android.support.design.widget.TextInputLayout>
+</RelativeLayout>

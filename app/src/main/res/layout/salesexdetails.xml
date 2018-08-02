@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Fragments.salesExDetails">
+
+
+    <TextView
+        android:id="@+id/namesales"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="Harish" />
+
+    <TextView
+        android:id="@+id/EmailIdSales"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp"
+        android:text="ntippshetti@gmail.com" />
+
+    <TextView
+        android:id="@+id/phonenumSales"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="142dp"
+        android:inputType="phone"
+        android:text="8762371896" />
+
+    <TextView
+        android:id="@+id/AreaSales"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="241dp"
+        android:text="Gokul Airport Road Hubli" />
+
+    <TextView
+        android:id="@+id/passwordSales"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="171dp"
+        android:text="123456"
+        tools:ignore="RtlCompat" />
+
+    <Button
+        android:id="@+id/salesEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="107dp"
+        android:layout_marginStart="69dp"
+        android:text="Edit"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="69dp" />
+
+    <Button
+        android:id="@+id/salesDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/salesEdit"
+        android:layout_marginEnd="69dp"
+        android:layout_marginRight="69dp"
+        android:text="delete" />
+
+    <TextView
+        android:id="@+id/addressSales"
+        android:layout_width="374dp"
+        android:layout_height="39dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="211dp"
+        android:text="TextView" />
+
+
+</RelativeLayout>

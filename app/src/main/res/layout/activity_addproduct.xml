@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.Addproduct">
+
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/gname_label"
+        android:layout_width="match_parent"
+        android:layout_height="105dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:paddingBottom="8dp"
+        app:errorEnabled="true">
+
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/goods"
+            android:layout_width="match_parent"
+            android:layout_height="96dp"
+            android:hint="productname"
+            android:inputType="text"
+            android:paddingBottom="5dp" />
+
+
+    </android.support.design.widget.TextInputLayout>
+
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/stock_label"
+        android:layout_width="match_parent"
+        android:layout_height="105dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="130dp"
+        android:paddingBottom="3dp"
+        app:errorEnabled="true">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/pri"
+            android:layout_width="366dp"
+            android:layout_height="89dp"
+            android:hint="stock"
+            android:inputType="number" />
+
+
+    </android.support.design.widget.TextInputLayout>
+
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/price_label"
+        android:layout_width="match_parent"
+        android:layout_height="103dp"
+        android:layout_above="@+id/btnaddProduct"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="85dp">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/stock"
+            android:layout_width="match_parent"
+            android:layout_height="76dp"
+            android:hint="price" />
+    </android.support.design.widget.TextInputLayout>
+
+
+    <Button
+        android:id="@+id/btnaddProduct"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="61dp"
+        android:onClick="confirminput"
+        tools:ignore="OnClick" />
+
+
+</RelativeLayout>

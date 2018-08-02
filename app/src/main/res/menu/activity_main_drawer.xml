@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_menu1"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Members" />
+        <item
+            android:id="@+id/nav_menu2"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="Customer Data" />
+        <item
+            android:id="@+id/nav_menu3"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Location Tracking" />
+        <item
+            android:id="@+id/nav_menu4"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Today Report" />
+        <item
+            android:id="@+id/nav_menu5"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="Product Details" />
+        <item
+            android:id="@+id/nav_menu6"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Area" />
+        <item
+            android:id="@+id/nav_menu7"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Report" />
+        <item
+            android:id="@+id/nav_menu8"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="Logout" />
+
+
+
+    </group>
+
+
+
+</menu>

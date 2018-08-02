@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.areaDetails">
+
+    <TextView
+        android:id="@+id/areaName"
+        android:layout_width="198dp"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/areaHeading"
+        android:layout_marginTop="136dp"
+        android:text="Harish"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/areaHeading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="108dp"
+        android:layout_marginTop="53dp"
+        android:text="Area Details "
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/Aname"
+        android:layout_width="wrap_content"
+        android:layout_height="34dp"
+        android:layout_alignBaseline="@+id/areaName"
+        android:layout_alignParentStart="true"
+        android:text="Area Name"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/area_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="217dp"
+        android:text="area_id" />
+
+    <TextView
+        android:id="@+id/area_id"
+        android:layout_width="196dp"
+        android:layout_height="35dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/areaName"
+        android:layout_marginTop="208dp" />
+
+</RelativeLayout>

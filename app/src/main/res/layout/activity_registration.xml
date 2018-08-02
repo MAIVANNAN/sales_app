@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ScrollView01"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".Activities.RegistrationActivity">
+
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:id="@+id/fname_label"
+        android:paddingBottom="8dp"
+        app:errorEnabled="true"
+        android:layout_alignParentLeft="true">
+
+
+
+        <android.support.design.widget.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:hint="First name"
+            android:paddingBottom="5dp"
+            android:id="@+id/firstnamewrapper"
+            android:textSize="20dp"
+            android:inputType="text"
+            />
+
+
+    </android.support.design.widget.TextInputLayout>
+
+
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="0.5dp"
+        android:layout_weight="1" />
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="80dp"
+        app:errorEnabled="true"
+        android:paddingBottom="3dp"
+        android:id="@+id/lnam_label"
+        android:layout_alignParentLeft="true">
+
+        <android.support.design.widget.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Last name"
+            android:id="@+id/lastnamewrapper"
+            android:inputType="text"/>
+
+
+    </android.support.design.widget.TextInputLayout>
+
+
+
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="0.5dp"
+        android:layout_weight="1" />
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="150dp"
+        app:errorEnabled="true"
+        android:paddingBottom="3dp"
+        app:passwordToggleEnabled="true"
+        android:id="@+id/ema_label"
+        android:layout_alignParentLeft="true">
+
+        <android.support.design.widget.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="E-mail"
+            android:id="@+id/emailwrapper"
+            android:inputType="text"/>
+
+
+    </android.support.design.widget.TextInputLayout>
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="8dp"
+        android:layout_weight="1" />
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="225dp"
+        app:errorEnabled="true"
+        android:paddingBottom="3dp"
+        android:id="@+id/phon_label"
+        android:layout_alignParentLeft="true">
+
+        <android.support.design.widget.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Phone"
+            android:id="@+id/phonewrapper"
+            android:inputType="phone"
+            />
+
+
+    </android.support.design.widget.TextInputLayout>
+
+
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="8dp"
+        android:layout_weight="1" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:text="Gender"
+        android:textSize="10dp"
+        android:id="@+id/textview"
+        android:layout_marginTop="290dp"/>
+
+
+    <RadioGroup
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="40dp"
+        android:layout_below="@+id/textview"
+        android:id="@+id/radioGender"
+        android:orientation="horizontal"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="40dp">
+
+        <RadioButton
+            android:id="@+id/radioMale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="23dp"
+            android:text="Male"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="23dp" />
+
+        <RadioButton
+            android:id="@+id/radioFemale"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="186dp"
+            android:layout_toEndOf="@+id/radioButton7"
+            android:text="Female"
+            android:layout_toRightOf="@+id/radioButton7" />
+    </RadioGroup>
+
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="380dp"
+        android:paddingBottom="3dp"
+        android:layout_alignParentLeft="true"
+        android:id="@+id/pass_label"
+        app:passwordToggleEnabled="true">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/passwordwrapper"
+            android:layout_width="match_parent"
+            android:layout_height="63dp"
+            android:hint="Password"
+            android:inputType="textPassword" />
+
+
+    </android.support.design.widget.TextInputLayout>
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="8dp"
+        android:layout_weight="1"
+        />
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/confirm_label"
+        android:layout_width="match_parent"
+        android:layout_height="66dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="474dp"
+        android:paddingBottom="3dp"
+        app:errorEnabled="true"
+        app:passwordToggleEnabled="true">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/confirmpasswordwrapper"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:hint="Confirm Password"
+            android:inputType="textPassword" />
+    </android.support.design.widget.TextInputLayout>
+
+    <Button
+        android:id="@+id/signUp"
+        android:layout_width="134dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="96dp"
+        android:layout_marginStart="96dp"
+        android:layout_marginTop="564dp"
+        android:text="REGISTER" />
+</RelativeLayout>
+</ScrollView>

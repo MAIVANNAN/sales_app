@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">Sales_app</string>
+    <string name="title_activity_otp">OtpActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="names">Open navigation drawer</string>
+    <string name="action_settings">Settings</string>
+    <string name="menu1">customers</string>
+    <string-array name="customer">
+        <item> robo</item>
+        <item>john</item>
+        <item>rocky</item>
+        <item>joko</item>
+        <item>kokosdjf</item>
+
+        <item>hagdskfjasdfk</item>
+        <item>jdaslfjhalsdf</item>
+    </string-array>
+
+    <string-array name="Area">
+        <item>Gokul Road</item>
+        <item>Vidyanagar</item>
+        <item>Navnagar</item>
+        <item>CBT</item>
+
+    </string-array>
+    <color name="white">#FFFFFF</color>
+
+</resources>
