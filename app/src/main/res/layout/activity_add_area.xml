@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,17 +9,21 @@
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/Aname_label"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="84dp"
-        app:errorEnabled="true">
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        app:errorEnabled="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="79dp">
 
         <android.support.design.widget.TextInputEditText
             android:id="@+id/addAreaName"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="64dp"
             android:hint="Area Name"
             android:inputType="text"
             android:maxLines="1" />
@@ -31,16 +35,16 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="209dp"
-        android:text="Add Area" />
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="100dp"
+        android:text="Add Area"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Aname_label"
+        app:layout_constraintVertical_bias="0.0" />
 
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/Ar_id"
-        android:layout_width="match_parent"
-        android:layout_height="89dp"
-        android:layout_below="@+id/Aname_label"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="31dp">
-
-    </android.support.design.widget.TextInputLayout>
-</RelativeLayout>
+</android.support.constraint.ConstraintLayout>
