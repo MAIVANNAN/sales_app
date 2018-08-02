@@ -316,14 +316,14 @@ public class EditCustomer extends AppCompatActivity {
         SharedPreferences LINK = getSharedPreferences("MAIN_LINK",0);
         String link1 = LINK.getString("MAIN_LINK","");
         Log.i("maivannan", "" + link1);
-        String URL_edit_cust = link1+"edit_customer.php";
-        Log.i("maivannan", "" + URL_edit_cust);
+        String URL_edit_custo = link1+"edit_customer.php";
+        Log.i("maivannan", "" + URL_edit_custo);
 
         final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Adding ");
         progressDialog.show();
         RequestQueue requestQueue = Volley.newRequestQueue(EditCustomer.this);
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_edit_cust, new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_edit_custo, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
 
