@@ -1,91 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Fragments.salesExDetails">
+    tools:context=".Fragments.salesExDetails"
+    android:id="@+id/relativeLayout6">
 
 
     <TextView
         android:id="@+id/namesales"
-        android:layout_width="match_parent"
+        android:layout_width="218dp"
         android:layout_height="50dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:text="Harish" />
+        android:layout_marginStart="8dp"
+        android:text="Harish"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="20dp" />
 
     <TextView
         android:id="@+id/EmailIdSales"
-        android:layout_width="match_parent"
+        android:layout_width="265dp"
         android:layout_height="50dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="80dp"
-        android:text="ntippshetti@gmail.com" />
+        android:text="ntippshetti@gmail.com"
+        tools:layout_editor_absoluteX="72dp"
+        tools:layout_editor_absoluteY="78dp" />
 
     <TextView
         android:id="@+id/phonenumSales"
-        android:layout_width="match_parent"
+        android:layout_width="240dp"
         android:layout_height="50dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
         android:layout_marginTop="142dp"
         android:inputType="phone"
-        android:text="8762371896" />
+        android:text="8762371896"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/AreaSales"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
         android:layout_marginBottom="241dp"
-        android:text="Gokul Airport Road Hubli" />
+        android:text="Gokul Airport Road Hubli"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
     <TextView
         android:id="@+id/passwordSales"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
         android:layout_marginBottom="171dp"
         android:text="123456"
-        tools:ignore="RtlCompat" />
+        tools:ignore="RtlCompat"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
     <Button
         android:id="@+id/salesEdit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
         android:layout_marginBottom="107dp"
         android:layout_marginStart="69dp"
         android:text="Edit"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="69dp" />
+        android:layout_marginLeft="69dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent" />
 
     <Button
         android:id="@+id/salesDelete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignTop="@+id/salesEdit"
         android:layout_marginEnd="69dp"
         android:layout_marginRight="69dp"
-        android:text="delete" />
+        android:text="delete"
+        app:layout_constraintTop_toTopOf="@+id/salesEdit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
 
     <TextView
         android:id="@+id/addressSales"
-        android:layout_width="374dp"
+        android:layout_width="167dp"
         android:layout_height="39dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="211dp"
-        android:text="TextView" />
+        android:text="TextView"
+        tools:layout_editor_absoluteX="108dp"
+        tools:layout_editor_absoluteY="216dp" />
 
 
-</RelativeLayout>
+</android.support.constraint.ConstraintLayout>

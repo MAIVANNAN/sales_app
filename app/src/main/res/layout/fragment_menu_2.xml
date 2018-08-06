@@ -1,30 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/white"
-    android:layout_height="match_parent">
+
+    android:layout_height="match_parent"
+    android:id="@+id/relativeLayout8">
+
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/customerNames"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="0dp"
+        android:layout_height="417dp"
+        android:layout_marginBottom="72dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
         android:scrollbars="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/createCust"
         tools:listitem="@layout/customer_layout" />
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/add_customer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_gravity="bottom|end"
-        android:layout_marginBottom="38dp"
-        android:layout_marginEnd="40dp"
-        app:srcCompat="@android:drawable/ic_input_add"
-        android:layout_marginRight="40dp"
-        android:layout_alignParentRight="true" />
 
-</RelativeLayout>
+    <TextView
+        android:id="@+id/createCust"
+        android:layout_width="0dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="84dp"
+        android:fontFamily="casual"
+        android:text="               Add Customer"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/salesExRecycle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.666"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.92" />
+
+    <ImageView
+        android:layout_width="49dp"
+        android:layout_height="36dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="56dp"
+
+        android:layout_marginTop="8dp"
+        android:src="@mipmap/add"
+        app:layout_constraintBottom_toBottomOf="@+id/createCust"
+        app:layout_constraintStart_toStartOf="@+id/createCust"
+        app:layout_constraintTop_toTopOf="@+id/createCust"
+        app:layout_constraintVertical_bias="1.0" />
+
+</android.support.constraint.ConstraintLayout>

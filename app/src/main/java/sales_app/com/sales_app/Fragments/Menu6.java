@@ -20,6 +20,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -62,6 +63,7 @@ public class Menu6 extends Fragment {
     private List<Area> areaList ;
     private RecyclerView recyclerView6;
     private areaAdapter maAdapter;
+    TextView add_Area;
 
 
 
@@ -83,12 +85,11 @@ public class Menu6 extends Fragment {
         areaList = new ArrayList<>();
 
         recyclerView6 = (RecyclerView) view.findViewById(R.id.AreaInfo);
+        add_Area = view.findViewById(R.id.createArea);
 
 
 
-
-        FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.fabArea);
-        fab.setOnClickListener(new View.OnClickListener() {
+        add_Area.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity().getApplicationContext(), addArea.class);

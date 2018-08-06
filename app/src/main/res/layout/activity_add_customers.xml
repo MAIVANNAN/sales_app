@@ -14,6 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:background="@color/white"
         tools:context=".Activities.addCustomers">
 
 
@@ -25,6 +26,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="24dp"
             app:errorEnabled="true"
+            android:background="@drawable/round_edit_text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -47,6 +49,8 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="24dp"
             app:errorEnabled="true"
+            android:background="@drawable/round_edit_text"
+
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/sname_label">
@@ -64,11 +68,13 @@
         <android.support.design.widget.TextInputLayout
             android:id="@+id/pho_label"
             android:layout_width="match_parent"
-            android:layout_height="68dp"
+            android:layout_height="58dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="24dp"
+            android:background="@drawable/round_edit_text"
             app:errorEnabled="true"
+
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/add_label">
@@ -90,6 +96,8 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="24dp"
             app:errorEnabled="true"
+            android:background="@drawable/round_edit_text"
+
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -106,12 +114,13 @@
 
         <Button
             android:id="@+id/add_customer"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="32dp"
             android:layout_marginTop="32dp"
-            android:onClick="Confirminput"
-            android:text="add"
+            android:background="@drawable/round_button"
+            android:text="ADD CUSTOMER"
+            android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintHorizontal_bias="0.509"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -126,10 +135,29 @@
             android:layout_height="46dp"
             android:layout_marginEnd="32dp"
             android:layout_marginTop="40dp"
-            android:spinnerMode="dialog"
+            android:background="@drawable/round_edit_text"
+            android:spinnerMode="dropdown"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/textView2"
             app:layout_constraintTop_toBottomOf="@+id/gst_label" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/drop"
+            app:layout_constraintBottom_toBottomOf="@+id/CustArea"
+            app:layout_constraintEnd_toEndOf="@+id/CustArea"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/CustArea"
+            app:layout_constraintTop_toTopOf="@+id/CustArea"
+            app:layout_constraintVertical_bias="1.0" />
 
         <TextView
             android:id="@+id/textView2"
@@ -145,10 +173,12 @@
         <android.support.design.widget.TextInputLayout
             android:id="@+id/gst_label"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="56dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="24dp"
+            android:background="@drawable/round_edit_text"
+
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/pho_label">
@@ -159,6 +189,14 @@
                 android:layout_height="wrap_content"
                 android:hint="GST number" />
         </android.support.design.widget.TextInputLayout>
+
+        <TextView
+            android:id="@+id/area_id_cust"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            tools:layout_editor_absoluteX="337dp"
+            tools:layout_editor_absoluteY="460dp" />
 
 
     </android.support.constraint.ConstraintLayout>

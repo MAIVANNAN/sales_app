@@ -57,8 +57,9 @@ import static android.content.Context.MODE_PRIVATE;
 public class Menu4 extends Fragment {
     private List<salesOfficers> salesOfficersList ;
     private RecyclerView recyclerView1;
-    private todaysReportAdapter maAdapter;
+    private salesAdapter maAdapter;
     FloatingActionButton fab;
+    String c_name,c_id;
 
 
 
@@ -113,60 +114,79 @@ public class Menu4 extends Fragment {
 
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        loadRecyclerViewData();
+
+    }
     private void loadRecyclerViewData(){
 
 
-
-        SharedPreferences LINK = getActivity().getSharedPreferences("MAIN_LINK",0);
-        String link1 = LINK.getString("MAIN_LINK","");
-        Log.i("maivannan", "" + link1);
-        String URLM4 = link1+"sales_officer_list.php";
-        Log.i("maivannan", "" + URLM4);
         final ProgressDialog progressDialog = new ProgressDialog(getActivity());
         progressDialog.setMessage("Loading");
         progressDialog.show();
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, URLM4, new Response.Listener<String>() {
+        SharedPreferences LINK = getActivity().getSharedPreferences("MAIN_LINK",0);
+        String link1 = LINK.getString("MAIN_LINK","");
+        Log.i("maivannan", "" + link1);
+
+        String URLM1 = link1+"sales_officer_list.php";
+        Log.i("maivannan", "" + URLM1);
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URLM1, new Response.Listener<String>() {
 
             public void onResponse(String response) {
                 Log.i("Hitesh",""+response);
-
-
-
                 progressDialog.dismiss();
+
                 try {
-
-
                     JSONObject object = new JSONObject(response);
-                    JSONObject object1 = object.getJSONObject("sales_officers_list_response");
-                    Log.i("maivannan",""+object1);
-
-                    JSONArray sales_officers  = object1.getJSONArray("area_list");
-
-
-                    for (int i=0;i<sales_officers.length();i++)
-                    {
+                    JSONObject jsonObj = new JSONObject(object.getString("sales_officers_list_response"));
+                    if(jsonObj.getString("errorcode").equals("47000")) {
+                        JSONArray array1 = jsonObj.getJSONArray("sales_officers_list");
 
 
-                        JSONObject o = sales_officers.getJSONObject(i);
+                        salesOfficersList.clear();
+                        Log.i("maivannan outer array", "" + array1);
 
-                        String s_id = o.getString("so_id");
-                        String so_name=o.getString("so_name");
-                        String so_address=o.getString("so_address");
-                        String so_email=o.getString("so_email");
-                        String so_phone =o.getString("so_phone");
-                        String c_name =o.getString("c_name");
-                        String c_id = o.getString("c_id");
+                        for (int i = 0; i < array1.length(); i++) {
 
+                            JSONArray jsonArraysubject;
+                            JSONObject jsonObj2;
+                            JSONObject o = array1.getJSONObject(i);
 
 
+                            String s_id = o.getString("so_id");
+                            String so_name = o.getString("so_name");
+                            String so_address = o.getString("so_address");
+                            String so_email = o.getString("so_email");
+                            String so_phone = o.getString("so_phone");
+
+                            jsonObj2 = array1.getJSONObject(i);
+
+                            jsonArraysubject = jsonObj2.getJSONArray("sales_officers_customer_list");
+
+                            for(int j=0 ;j<jsonArraysubject.length();j++) {
+                                JSONObject o1 = jsonArraysubject.getJSONObject(j);
+
+                                c_name = o1.getString("c_name");
+                                c_id = o1.getString("c_id");
+                            }
+                            Log.i(" ",c_name);
 
 
-                        salesOfficers item = new salesOfficers(s_id,so_name,so_phone,c_id,so_email,so_address,c_name);
-                        Log.i("item",""+item.getE_id()+ " "+item.getEPhonenum()+" "+item.getEmail_id()+" "+item.getAreasales()+""+item.getEName());
-                        salesOfficersList.add(item);
+
+
+                            salesOfficers item = new salesOfficers(s_id, so_name, so_phone, c_id, so_email, so_address, c_name);
+                            salesOfficersList.add(item);
+                        }
+                    }
+                    else {
+                        Toast.makeText(getActivity().getApplicationContext(),"NO SALES OFFICERS",Toast.LENGTH_LONG).show();
 
                     }
-                    maAdapter = new todaysReportAdapter(salesOfficersList);
+
+                    maAdapter = new salesAdapter(salesOfficersList,getActivity().getApplicationContext());
                     RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
                     recyclerView1.addItemDecoration(new DividerItemDecoration(getActivity(), LinearLayoutManager.VERTICAL));
                     recyclerView1.setHasFixedSize(true);
@@ -174,6 +194,7 @@ public class Menu4 extends Fragment {
                     recyclerView1.setLayoutManager(mLayoutManager);
                     recyclerView1.setItemAnimator(new DefaultItemAnimator());
                     recyclerView1.setAdapter(maAdapter);
+
 
 
 
@@ -204,10 +225,10 @@ public class Menu4 extends Fragment {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String,String> stringMap = new HashMap<>();
 
-                SharedPreferences manger_id = getActivity().getSharedPreferences("manager_id",MODE_PRIVATE);
+                SharedPreferences manger_id = getActivity().getSharedPreferences("manager_id",0);
                 String s_id = manger_id.getString("manager_id","");
                 stringMap.put("s_id",s_id);
-
+                Log.i("sales list input",stringMap.toString());
 
                 return stringMap;
             }
@@ -219,7 +240,6 @@ public class Menu4 extends Fragment {
 
 
     }
-
 
 
 }

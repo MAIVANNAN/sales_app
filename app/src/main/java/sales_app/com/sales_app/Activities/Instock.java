@@ -87,7 +87,7 @@ public class Instock extends AppCompatActivity {
         tv4.setTextColor(Color.BLACK);
         tv4.setPadding(10, 10, 10, 10);
         tb.addView(tv4);
-        stk.addView(tb);
+        //stk.addView(tb);
 
 
 

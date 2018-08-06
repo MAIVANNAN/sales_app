@@ -1,146 +1,203 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Activities.EditSalesOfficer"
-    android:id="@+id/relativeLayout">
+    android:id="@+id/ScrollView01"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content">
 
-
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/exName_label"
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/relativeLayout2"
         android:layout_width="match_parent"
-        android:layout_height="103dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="12dp">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/white"
+        tools:context=".Activities.addCustomers">
 
-        <android.support.design.widget.TextInputEditText
-            android:id="@+id/EtSalesExName"
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/exName_label"
             android:layout_width="match_parent"
             android:layout_height="59dp"
-            android:hint="Name"
-            android:inputType="text"
-            android:maxLength="20"
-            android:maxLines="1" />
-    </android.support.design.widget.TextInputLayout>
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="24dp"
+            app:errorEnabled="true"
+            android:background="@drawable/round_edit_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/exEmail_label"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="116dp">
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/EtSalesExName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Name"
+                android:inputType="text"
+                android:maxLines="1" />
+        </android.support.design.widget.TextInputLayout>
 
-        <android.support.design.widget.TextInputEditText
-            android:id="@+id/EtSalesExEmail"
-
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/exEmail_label"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Email Address"
-            android:inputType="textEmailAddress"
-            android:maxLength="25"
-            android:maxLines="1" />
-    </android.support.design.widget.TextInputLayout>
+            android:layout_height="59dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="24dp"
+            app:errorEnabled="true"
+            android:background="@drawable/round_edit_text"
 
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/exPh_label"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="201dp">
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/exName_label">
 
-        <android.support.design.widget.TextInputEditText
-            android:id="@+id/EtSalesExPh"
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/EtSalesExEmail"
+                android:layout_width="match_parent"
+                android:layout_height="47dp"
+
+                android:hint="E-mail"
+                android:inputType="textEmailAddress"
+                android:maxLines="1" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/exPh_label"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Phone Number"
-            android:inputType="phone"
-            android:maxLength="10"
-            android:maxLines="1" />
-    </android.support.design.widget.TextInputLayout>
+            android:layout_height="58dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/round_edit_text"
+            app:errorEnabled="true"
 
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/exArea_label"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="170dp">
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/add_label">
 
-    </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/EtSalesExPh"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Phone"
+                android:inputType="phone"
+                android:maxLines="1" />
+        </android.support.design.widget.TextInputLayout>
 
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/exPass_label"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="100dp">
-
-        <android.support.design.widget.TextInputEditText
-            android:id="@+id/EtSalesExPass"
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/add_label"
             android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="24dp"
+            app:errorEnabled="true"
+            android:background="@drawable/round_edit_text"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/exEmail_label">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/EtSalesExAddr"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Address"
+                android:inputType="text"
+                android:maxLines="1" />
+        </android.support.design.widget.TextInputLayout>
+
+        <Button
+            android:id="@+id/btAddSalesEx"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:hint="password"
-            android:inputType="text|numberPassword"
-            android:maxLength="12"
-            android:maxLines="1" />
-    </android.support.design.widget.TextInputLayout>
+            android:layout_marginBottom="32dp"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/round_button"
+            android:text="Edit Sales Officer"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.509"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/CustArea"
+            app:layout_constraintVertical_bias="1.0"
+            tools:ignore="OnClick" />
 
-    <Button
-        android:id="@+id/btAddSalesEx"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="29dp"
-        android:text="Add" />
+        <Spinner
+            android:id="@+id/CustArea"
+            android:layout_width="164dp"
+            android:layout_height="46dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/round_edit_text"
+            android:spinnerMode="dropdown"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView2"
+            app:layout_constraintTop_toBottomOf="@+id/exPass_label" />
 
-
-    <Spinner
-        android:id="@+id/CustArea"
-        android:layout_width="230dp"
-        android:layout_height="41dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="173dp" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="62dp"
-        android:layout_height="31dp"
-        android:layout_alignBottom="@+id/CustArea"
-        android:layout_alignParentStart="true"
-        android:text="Area"
-        android:textSize="18sp" />
-
-    <TextView
-        android:id="@+id/area_id_cust"
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:layout_alignBottom="@+id/CustArea"
-        android:layout_toEndOf="@+id/CustArea"
-        android:text="TextView" />
-
-
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="76dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="230dp">
-
-        <android.support.design.widget.TextInputEditText
-            android:id="@+id/EtSalesExAddr"
-            android:layout_width="match_parent"
+        <ImageView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:inputType="text"
-            android:maxLength="10"
-            android:maxLines="1"
-            android:hint="address" />
-    </android.support.design.widget.TextInputLayout>
-</RelativeLayout>
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/drop"
+            app:layout_constraintBottom_toBottomOf="@+id/CustArea"
+            app:layout_constraintEnd_toEndOf="@+id/CustArea"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/CustArea"
+            app:layout_constraintTop_toTopOf="@+id/CustArea"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="62dp"
+            android:layout_height="31dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="460dp"
+            android:text="Area"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/exPass_label"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/round_edit_text"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/exPh_label">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/EtSalesExPass"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Password" />
+        </android.support.design.widget.TextInputLayout>
+
+        <TextView
+            android:id="@+id/area_id_cust"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            tools:layout_editor_absoluteX="337dp"
+            tools:layout_editor_absoluteY="460dp" />
+
+
+    </android.support.constraint.ConstraintLayout>
+</ScrollView>

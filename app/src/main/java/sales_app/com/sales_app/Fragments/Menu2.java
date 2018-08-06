@@ -11,14 +11,23 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.MenuItemCompat;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SearchView;
+import android.widget.SearchView.OnQueryTextListener;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -53,11 +62,14 @@ import static android.content.Context.MODE_PRIVATE;
  */
 
 
-public class Menu2 extends Fragment {
+public class Menu2 extends Fragment implements SearchView.OnQueryTextListener {
     private List<Customer> customerList ;
     private RecyclerView recyclerView2;
     private customerAdapter mAdapter;
     public static final String PREFS_NAME1 = "manager_id";
+    Toolbar toolbar ;
+    TextView add_customer;
+
 
 
 
@@ -77,17 +89,18 @@ public class Menu2 extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         getActivity().setTitle("Customer details");
         //you can set the title for your toolbar here for different fragments different titles
+        toolbar = (Toolbar)view.findViewById(R.id.toolbar);
+        ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
 
         customerList = new ArrayList<>();
         recyclerView2 =  (RecyclerView) view.findViewById(R.id.customerNames);
+        add_customer = view.findViewById(R.id.createCust);
 
 
 
 
 
-        FloatingActionButton fab1 = (FloatingActionButton) view.findViewById(R.id.add_customer);
-
-        fab1.setOnClickListener(new View.OnClickListener() {
+        add_customer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity().getApplicationContext(), addCustomers.class);
@@ -127,6 +140,7 @@ public class Menu2 extends Fragment {
 
 
     }
+
 
     @Override
     public void onResume() {
@@ -231,6 +245,26 @@ public class Menu2 extends Fragment {
 
 
     }
+    @Override
+    public boolean onQueryTextSubmit(String s) {
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        newText = newText.toLowerCase();
+        ArrayList<Customer> newList = new ArrayList<>();
+        for (Customer customer :customerList)
+        {
+            String name = customer.getName().toLowerCase();
+            if(name.contains(newText))
+                newList.add(customer);
+        }
+        mAdapter.setFilter(newList);
+        return true;
+    }
+
+
 
 
 

@@ -12,14 +12,22 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.view.MenuItemCompat;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SearchView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -38,6 +46,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 import sales_app.com.sales_app.Activities.addSalesEx;
 import sales_app.com.sales_app.R;
@@ -53,13 +62,14 @@ import static android.content.Context.MODE_PRIVATE;
  */
 
 
-public class Menu1 extends Fragment {
+public class Menu1 extends Fragment  {
     private List<salesOfficers> salesOfficersList ;
     private RecyclerView recyclerView1;
     private salesAdapter mAdapter;
     FloatingActionButton fab;
     //String URL_fetch_data="http://6f46f287.ngrok.io/php_login/sales_officer_list.php";
     String c_name,c_id;
+    TextView add_officer;
 
 
     @Nullable
@@ -67,6 +77,8 @@ public class Menu1 extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         //returning our layout file
         //change R.layout.yourlayoutfilename for each of your fragments
+        setHasOptionsMenu(true);
+
         return inflater.inflate(R.layout.fragment_menu_1, container, false);
     }
 
@@ -76,10 +88,11 @@ public class Menu1 extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         //you can set the title for your toolbar here for different fragments different titles
 
-        getActivity().setTitle("sales Executive details ");
+        Objects.requireNonNull(getActivity()).setTitle("sales Executive details ");
         salesOfficersList = new ArrayList<>();
         //you can set the title for your toolbar here for different fragments different titles
         recyclerView1 =   view.findViewById(R.id.salesExRecycle);
+        add_officer = view.findViewById(R.id.createsalesEx);
 
 
 
@@ -89,8 +102,11 @@ public class Menu1 extends Fragment {
 
 
 
-        FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+
+
+
+
+        add_officer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity().getApplicationContext(), addSalesEx.class);
@@ -99,6 +115,7 @@ public class Menu1 extends Fragment {
 
             }
         });
+
 
 
         recyclerView1.addOnItemTouchListener(new RecyclerTouchListener(getActivity().getApplicationContext(), recyclerView1, new RecyclerTouchListener.ClickListener() {
@@ -123,6 +140,10 @@ public class Menu1 extends Fragment {
         }));
 
     }
+
+
+
+
 
     @Override
     public void onResume() {
@@ -154,28 +175,35 @@ public class Menu1 extends Fragment {
                     JSONObject jsonObj = new JSONObject(object.getString("sales_officers_list_response"));
                     if(jsonObj.getString("errorcode").equals("47000")) {
                         JSONArray array1 = jsonObj.getJSONArray("sales_officers_list");
+
+
                         salesOfficersList.clear();
-                        Log.i("maivannan", "" + array1);
+                        Log.i("maivannan outer array", "" + array1);
 
                         for (int i = 0; i < array1.length(); i++) {
 
-
+                            JSONArray jsonArraysubject;
+                            JSONObject jsonObj2;
                             JSONObject o = array1.getJSONObject(i);
+
 
                             String s_id = o.getString("so_id");
                             String so_name = o.getString("so_name");
                             String so_address = o.getString("so_address");
                             String so_email = o.getString("so_email");
                             String so_phone = o.getString("so_phone");
-                            JSONObject jsonObj1 = new JSONObject(object.getString("sales_officers_list_response"));
-                            JSONArray array2 = jsonObj1.getJSONArray("sales_officers_customer_list");
 
+                            jsonObj2 = array1.getJSONObject(i);
 
-                            for(int j=0 ;j<array2.length();j++) {
-                                 c_name = o.getString("c_name");
-                                 c_id = o.getString("c_id");
+                            jsonArraysubject = jsonObj2.getJSONArray("sales_officers_customer_list");
+
+                            for(int j=0 ;j<jsonArraysubject.length();j++) {
+                                JSONObject o1 = jsonArraysubject.getJSONObject(j);
+
+                                c_name = o1.getString("c_name");
+                                c_id = o1.getString("c_id");
                             }
-                            Log.i("sales list input",c_name);
+                            Log.i(" ",c_name);
 
 
 
@@ -243,6 +271,7 @@ public class Menu1 extends Fragment {
 
 
     }
+
 
 
 }

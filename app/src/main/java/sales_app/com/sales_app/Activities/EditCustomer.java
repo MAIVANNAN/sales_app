@@ -54,8 +54,7 @@ public class EditCustomer extends AppCompatActivity {
 
     Button custEditBtn,delButton;
     private static final int REQUEST_CODE_EMAIL =7;
-    String url_Edit_customer="http://6f46f287.ngrok.io/php_login/edit_customer.php";
-    private static final String URL_fetch_data="http://6f46f287.ngrok.io/php_login/area_list.php";
+
 
     MainActivity globalvariable;
 

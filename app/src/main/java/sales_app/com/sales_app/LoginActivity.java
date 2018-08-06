@@ -35,7 +35,7 @@ import sales_app.com.sales_app.Activities.RegistrationActivity;
 public class LoginActivity extends AppCompatActivity {
 
     //public static final String PREFS_NAME = "LoginPrefs";
-    public static String LINK ="http://88ef7ce4.ngrok.io/php_login/";
+    public static String LINK ="http://c3b003a8.ngrok.io/php_login/";
     public static String Sign_up_URL = LINK+"sm_login.php";
     TextInputEditText username, password;
     TextInputLayout username_label, password_label;

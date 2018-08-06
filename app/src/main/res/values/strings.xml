@@ -6,6 +6,7 @@
     <string name="names">Open navigation drawer</string>
     <string name="action_settings">Settings</string>
     <string name="menu1">customers</string>
+    <string name="search">Search</string>
     <string-array name="customer">
         <item> robo</item>
         <item>john</item>
@@ -25,5 +26,8 @@
 
     </string-array>
     <color name="white">#FFFFFF</color>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

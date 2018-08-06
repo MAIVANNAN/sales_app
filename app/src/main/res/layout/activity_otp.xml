@@ -26,7 +26,8 @@
             android:layout_gravity="center"
             android:layout_margin="5dp"
             android:text="OTP Confirmation"
-            android:textSize="18sp"
+            android:textColor="@color/Name"
+            android:textSize="24sp"
             android:textStyle="bold" />
 
         <EditText
@@ -40,7 +41,9 @@
             android:id="@+id/verify_otp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="VERIFY" />
+            android:background="@drawable/round_button"
+            android:text="VERIFY"
+            android:textColor="@color/cardview_light_background" />
 
 
     </LinearLayout>

@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import sales_app.com.sales_app.models.Customer;
@@ -51,5 +52,14 @@ public class customerAdapter extends RecyclerView.Adapter<customerAdapter.MyView
     @Override
     public int getItemCount() {
         return customerList.size();
+    }
+
+
+    public void setFilter(ArrayList<Customer> newList)
+    {
+
+        customerList = new ArrayList<>();
+        customerList.addAll(newList);
+        notifyDataSetChanged();
     }
 }
