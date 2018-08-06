@@ -57,7 +57,7 @@
             android:id="@+id/pri"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="stock"
+            android:hint="price"
             android:inputType="number" />
 
 
@@ -81,7 +81,7 @@
             android:id="@+id/stock"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="price" />
+            android:hint="stock" />
     </android.support.design.widget.TextInputLayout>
 
 

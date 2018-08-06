@@ -9,6 +9,8 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -111,15 +113,7 @@ public class inStock extends Fragment {
 
 
         productList  = new ArrayList<>();
-        productList.add(new Product(1,"juice ","200","21","2"));
-        productList.add(new Product(2,"juice ","201","22","2"));
-        productList.add(new Product(3,"juice ","202","23","2"));
-        productList.add(new Product(4,"juice ","203","24","2"));
-        productList.add(new Product(4,"juice ","203","25","2"));
-        productList.add(new Product(6,"juice ","204","26","2"));
-        productList.add(new Product(7,"juice ","205","27","2"));
 
-        productList.add(new Product(10,"juice ","20","20","2"));
 
 
 
@@ -148,12 +142,124 @@ public class inStock extends Fragment {
 
 
 
+
+
+
         recyclerView12 =(RecyclerView)v.findViewById(R.id.productRecycleView);
         mAdapter = new productAdapter(productList,getContext());
         recyclerView12.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView12.setAdapter(mAdapter);
 
         return v ;
+    }
+    @Override
+    public void onResume() {
+        super.onResume();
+        loadRecyclerViewData();
+
+    }
+
+    private void loadRecyclerViewData(){
+
+
+        final ProgressDialog progressDialog = new ProgressDialog(getActivity());
+        progressDialog.setMessage("Loading");
+        progressDialog.show();
+        SharedPreferences manger_id = getActivity().getSharedPreferences("manager_id",0);
+        final String s_id = manger_id.getString("manager_id","");
+        SharedPreferences LINK = getActivity().getSharedPreferences("MAIN_LINK",0);
+        String link1 = LINK.getString("MAIN_LINK","");
+        Log.i("maivannan", "" + link1);
+
+        String URLM1 = link1+"instock_product.php";
+        Log.i("maivannan", "" + URLM1);
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URLM1, new Response.Listener<String>() {
+
+            public void onResponse(String response) {
+                Log.i("Hitesh",""+response);
+                progressDialog.dismiss();
+
+                try {
+                    JSONObject object = new JSONObject(response);
+                    JSONObject jsonObj = new JSONObject(object.getString("instock_product_response"));
+                    if(jsonObj.getString("errorcode").equals("47000")) {
+
+                        JSONArray array = jsonObj.getJSONArray("area_list");
+                        productList.clear();
+
+                        for (int i = 0; i < array.length(); i++) {
+                            Log.i("count", "" + array.length());
+
+                            JSONObject o1 = array.getJSONObject(i);
+
+                            String p_id = o1.getString("p_id");
+                            String p_name = o1.getString("p_name");
+                            String price = o1.getString("price");
+                            String no_of_stock = o1.getString("no_of_stock");
+
+                            Product item = new Product(p_id,p_name,price,no_of_stock,s_id);
+                            productList.add(item);
+                        }
+                    }
+                    else {
+                        Toast.makeText(getActivity().getApplicationContext(),"NO PRODUCTS",Toast.LENGTH_LONG).show();
+
+                    }
+
+                    mAdapter = new productAdapter(productList,getActivity().getApplicationContext());
+                    RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
+                    recyclerView12.addItemDecoration(new DividerItemDecoration(getActivity(), LinearLayoutManager.VERTICAL));
+                    recyclerView12.setHasFixedSize(true);
+                    recyclerView12.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
+                    recyclerView12.setLayoutManager(mLayoutManager);
+                    recyclerView12.setItemAnimator(new DefaultItemAnimator());
+                    recyclerView12.setAdapter(mAdapter);
+
+
+
+
+
+
+
+
+
+
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+
+            }
+        },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        progressDialog.dismiss();
+                        Toast.makeText(getActivity().getApplicationContext(),error.getMessage(),Toast.LENGTH_LONG).show();
+
+                    }
+                }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String,String> stringMap = new HashMap<>();
+
+                SharedPreferences manger_id = getActivity().getSharedPreferences("manager_id",0);
+                String s_id = manger_id.getString("manager_id","");
+                stringMap.put("s_id",s_id);
+                Log.i("sales list input",stringMap.toString());
+
+                return stringMap;
+            }
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(getActivity().getApplicationContext());
+        requestQueue.add(stringRequest);
+
+
+
     }
 
     // TODO: Rename method, update argument and hook method into UI event

@@ -71,15 +71,15 @@ public class soldItems extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
         productList  = new ArrayList<>();
-        productList.add(new Product(1,"juice ","200","21","2"));
-        productList.add(new Product(2,"juice ","201","22","2"));
-        productList.add(new Product(3,"juice ","202","23","2"));
-        productList.add(new Product(4,"juice ","203","24","2"));
-        productList.add(new Product(4,"juice ","203","25","2"));
-        productList.add(new Product(6,"juice ","204","26","2"));
-        productList.add(new Product(7,"juice ","205","27","2"));
+        productList.add(new Product("1","juice ","200","21","2"));
+        productList.add(new Product("1","juice ","200","21","2"));
+        productList.add(new Product("1","juice ","200","21","2"));
+        productList.add(new Product("1","juice ","200","21","2"));
+        productList.add(new Product("1","juice ","200","21","2"));
+        productList.add(new Product("1","juice ","200","21","2"));
+        productList.add(new Product("1","juice ","200","21","2"));
+        productList.add(new Product("1","juice ","200","21","2"));
 
-        productList.add(new Product(10,"juice ","20","20","2"));
     }
 
     @Override

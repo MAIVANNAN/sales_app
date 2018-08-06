@@ -4,13 +4,13 @@ package sales_app.com.sales_app.models;
 
 public class Product {
 
-    private int P_id;
+    private String P_id;
     private String p_name;
     private String price ;
     private String s_id;
     private String instock;
 
-    public Product(int p_id, String p_name, String price, String instock,String s_id) {
+    public Product(String p_id, String p_name, String price, String instock,String s_id) {
         P_id = p_id;
         this.p_name = p_name;
         this.price = price;
@@ -27,11 +27,11 @@ public class Product {
         this.s_id = s_id;
     }
 
-    public int getP_id() {
+    public String getP_id() {
         return P_id;
     }
 
-    public void setP_id(int p_id) {
+    public void setP_id(String p_id) {
         P_id = p_id;
     }
 
