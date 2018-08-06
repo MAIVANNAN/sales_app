@@ -21,56 +21,59 @@
             android:padding="2dp" />
 
         <TextView
+            android:id="@+id/Product_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="15dp"
             android:layout_toEndOf="@id/imageView"
+
+            android:fontFamily="monospace"
             android:text="Line 1"
             android:textColor="@android:color/black"
-            android:layout_marginTop="15dp"
-
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:layout_marginStart="16dp"
-            android:id="@+id/Product_name"/>
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/Details"
+            android:id="@+id/Instock_item"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/Product_name"
+            android:layout_marginBottom="15dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_toEndOf="@id/imageView"
             android:text="Line 2"
-            android:layout_marginBottom="15dp"
 
 
             android:textSize="15sp"
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/price"
+            android:id="@+id/price_item"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:layout_marginEnd="70dp"
+            android:fontFamily="monospace"
             android:text="Line 3"
-            android:textColor="@android:color/black"
 
-            android:textSize="20sp"
+            android:textColor="@android:color/black"
+            android:textSize="14sp"
             android:textStyle="bold" />
 
         <ImageView
             android:id="@+id/Details_P"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="47dp"
+            android:layout_height="40dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentTop="true"
             android:layout_centerVertical="true"
             android:layout_marginEnd="15dp"
 
+            android:layout_marginTop="30dp"
             android:padding="2dp"
             android:src="@mipmap/details_round"
             app:srcCompat="@drawable/ic_error_outline_black_24dp" />

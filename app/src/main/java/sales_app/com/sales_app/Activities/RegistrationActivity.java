@@ -86,7 +86,13 @@ public class RegistrationActivity extends AppCompatActivity {
     private TextInputEditText password;
     private TextInputEditText confirmpassword;
     TextInputLayout fname_label,lnam_label,ema_label,phon_label,pass_label,confirm_label;
+    String selectWay;
 
+
+
+
+    private RadioGroup radioSexGroup;
+    private RadioButton radioSexButton;
     //private static TextView googleAccounts, allAccounts;
 
 
@@ -112,11 +118,10 @@ public class RegistrationActivity extends AppCompatActivity {
         password = (TextInputEditText) findViewById(R.id.passwordwrapper);
         confirmpassword = (TextInputEditText) findViewById(R.id.confirmpasswordwrapper);
         signupbtn = findViewById(R.id.signUp);
-
+        radioSexGroup = (RadioGroup) findViewById(R.id.radioSex);
         //radioGenderGroup =  findViewById(R.id.radioGender);
         //final int selectedId = radioGenderGroup.getCheckedRadioButtonId();
         // radioGenderButton = findViewById(selectedId);
-
 
 
 
@@ -149,11 +154,20 @@ public class RegistrationActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
+
+
+                int selectedId = radioSexGroup.getCheckedRadioButtonId();
+
+                // find the radiobutton by returned id
+                radioSexButton = (RadioButton) findViewById(selectedId);
+                selectWay = radioSexButton.getText().toString();
+                Log.i("radio sex button",""+selectWay);
+
                 String semail = email.getText().toString();
                 String suser1 = fname.getText().toString();
                 String suser2 = lname.getText().toString();
                 String spass = password.getText().toString();
-                String sgender = "male";
+                String sgender = selectWay;
                 String smob = phone.getText().toString();
 
                 String dId = FirebaseInstanceId.getInstance().getToken();
@@ -163,7 +177,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
                 if (!validateFirstname() || !validateEmail() || !validateLastname() || !validatePassword() || !validateConfirmpassword()||!validatePhone()) {
 
-                    Toast.makeText(RegistrationActivity.this, "Fill all details", Toast.LENGTH_SHORT).show();
+
                 } else {
 
 

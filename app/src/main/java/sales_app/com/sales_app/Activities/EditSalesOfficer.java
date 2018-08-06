@@ -56,8 +56,6 @@ public class EditSalesOfficer extends AppCompatActivity {
     private ArrayList<String> arrayList;
 
     private static final int REQUEST_CODE_EMAIL =7;
-    String URL_add_sales_officer="http://6f46f287.ngrok.io/php_login/add_sales_officer.php";
-    String URL_fetch_data="http://6f46f287.ngrok.io/php_login/area_list.php";
     MainActivity globalvariable;
 
     private String TAG = "addSalesActivity";
@@ -177,7 +175,7 @@ public class EditSalesOfficer extends AppCompatActivity {
                     editor.putString("Area", earea);
                     editor.putString("device_id",dId);
                     editor.putString("role",role);
-                    editor.putString("so_id","19");
+                    editor.putString("so_id",so_id);
                     Log.i("Maivannan",""+dId);
 
                     editor.commit();
@@ -248,7 +246,7 @@ public class EditSalesOfficer extends AppCompatActivity {
                 stringMap.put("device_id",dID);
                 stringMap.put("role",role);
                 stringMap.put("a_id",Area);
-                stringMap.put("so_id",s_id);
+                stringMap.put("so_id",so_id);
                 Log.i("maivannan",""+stringMap.toString());
 
                 return stringMap;
@@ -269,7 +267,7 @@ public class EditSalesOfficer extends AppCompatActivity {
         Log.i("maivannan", "" + URL_area_list);
 
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_fetch_data, new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_area_list, new Response.Listener<String>() {
 
             public void onResponse(String response) {
                 Log.i("Hitesh",""+response);

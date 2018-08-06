@@ -4,14 +4,11 @@ package sales_app.com.sales_app.Fragments;
  * Created by hp on 29-05-2018.
  */
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
@@ -41,14 +38,11 @@ import java.util.List;
 import java.util.Map;
 
 import sales_app.com.sales_app.Activities.addArea;
-import sales_app.com.sales_app.Activities.addSalesEx;
 import sales_app.com.sales_app.Activities.areaDetails;
-import sales_app.com.sales_app.adapters.salesAdapter;
 import sales_app.com.sales_app.models.Area;
 import sales_app.com.sales_app.models.RecyclerTouchListener;
 import sales_app.com.sales_app.R;
 import sales_app.com.sales_app.adapters.areaAdapter;
-import sales_app.com.sales_app.models.salesOfficers;
 
 
 import static android.content.Context.MODE_PRIVATE;
@@ -85,7 +79,7 @@ public class Menu6 extends Fragment {
         areaList = new ArrayList<>();
 
         recyclerView6 = (RecyclerView) view.findViewById(R.id.AreaInfo);
-        add_Area = view.findViewById(R.id.createArea);
+        add_Area = view.findViewById(R.id.add_product_p);
 
 
 

@@ -29,11 +29,9 @@ public class productAdapter extends RecyclerView.Adapter<productAdapter.MyViewHo
 
         public MyViewHolder(View view) {
             super(view);
-            PName = view.findViewById(R.id.productName);
-            Pid =view.findViewById(R.id.p_id);
-            Sl_no =view.findViewById(R.id.sl_no);
-            Proprice =view.findViewById(R.id.goodsPrice);
-            ProInStock =view.findViewById(R.id.Ingoods);
+            PName = view.findViewById(R.id.Product_name);
+            Proprice =view.findViewById(R.id.price_item);
+            ProInStock =view.findViewById(R.id.Instock_item);
 
 
 
@@ -61,7 +59,6 @@ public class productAdapter extends RecyclerView.Adapter<productAdapter.MyViewHo
         final Product product = productList.get(position);
         //holder.id.setText(product.getP_id());
         holder.PName.setText(product.getP_name());
-        holder.Pid.setText(product.getP_id());
         holder.ProInStock.setText(product.getInstock());
         holder.Proprice.setText(product.getPrice());
 

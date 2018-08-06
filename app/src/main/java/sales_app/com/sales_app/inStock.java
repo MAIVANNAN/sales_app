@@ -3,17 +3,20 @@ package sales_app.com.sales_app;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TableLayout;
+import android.widget.Button;
 import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,11 +34,21 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Objects;
+
 import android.view.View;
 
+import sales_app.com.sales_app.Activities.Addproduct;
 import sales_app.com.sales_app.Activities.Instock;
+import sales_app.com.sales_app.Activities.addSalesEx;
+import sales_app.com.sales_app.adapters.productAdapter;
+import sales_app.com.sales_app.adapters.salesAdapter;
+import sales_app.com.sales_app.models.Product;
+import sales_app.com.sales_app.models.salesOfficers;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -49,6 +62,11 @@ import static android.content.Context.MODE_PRIVATE;
  * create an instance of this fragment.
  */
 public class inStock extends Fragment {
+    private List<Product> productList ;
+    private RecyclerView recyclerView12;
+    private productAdapter mAdapter;
+    View v;
+    TextView add_product;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -90,6 +108,22 @@ public class inStock extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
+
+
+        productList  = new ArrayList<>();
+        productList.add(new Product(1,"juice ","200","21","2"));
+        productList.add(new Product(2,"juice ","201","22","2"));
+        productList.add(new Product(3,"juice ","202","23","2"));
+        productList.add(new Product(4,"juice ","203","24","2"));
+        productList.add(new Product(4,"juice ","203","25","2"));
+        productList.add(new Product(6,"juice ","204","26","2"));
+        productList.add(new Product(7,"juice ","205","27","2"));
+
+        productList.add(new Product(10,"juice ","20","20","2"));
+
+
+
+
     }
 
 
@@ -98,8 +132,28 @@ public class inStock extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        v=inflater.inflate(R.layout.fragment_in_stock, container, false);
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_in_stock, container, false);
+        add_product = v.findViewById(R.id.add_product_p);
+        add_product.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity().getApplicationContext(), Addproduct.class);
+
+                startActivity(intent);
+
+            }
+        });
+
+
+
+
+        recyclerView12 =(RecyclerView)v.findViewById(R.id.productRecycleView);
+        mAdapter = new productAdapter(productList,getContext());
+        recyclerView12.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerView12.setAdapter(mAdapter);
+
+        return v ;
     }
 
     // TODO: Rename method, update argument and hook method into UI event

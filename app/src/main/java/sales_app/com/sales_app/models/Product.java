@@ -6,11 +6,11 @@ public class Product {
 
     private int P_id;
     private String p_name;
-    private int price ;
+    private String price ;
     private String s_id;
     private String instock;
 
-    public Product(int p_id, String p_name, int price, String instock,String s_id) {
+    public Product(int p_id, String p_name, String price, String instock,String s_id) {
         P_id = p_id;
         this.p_name = p_name;
         this.price = price;
@@ -43,18 +43,20 @@ public class Product {
         this.p_name = p_name;
     }
 
-    public int getPrice() {
-        return price;
-    }
 
-    public void setPrice(int price) {
-        this.price = price;
-    }
 
 
 
     public String getInstock() {
         return instock;
+    }
+
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
     }
 
     public void setInstock(String instock) {

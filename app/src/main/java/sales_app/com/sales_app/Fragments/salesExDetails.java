@@ -69,7 +69,6 @@ public class salesExDetails extends AppCompatActivity{
             salesExName.setText(getName);
             salesExEmail.setText(getEmail);
             salesExPhone.setText(getPhone);
-            salesExArea.setText(getArea);
             salesExAddress.setText(getAddress);
             salesExpassword.setText(getPassword);
 
@@ -84,8 +83,6 @@ public class salesExDetails extends AppCompatActivity{
                 intent.putExtra("so_Email",getEmail);
                 intent.putExtra("so_Phone",getPhone);
                 intent.putExtra("so_Address",getAddress);
-                intent.putExtra("so_Area",getArea);
-
                 intent.putExtra("so_password",getPassword);
 
 
@@ -126,7 +123,7 @@ public class salesExDetails extends AppCompatActivity{
                     protected Map<String, String> getParams() throws AuthFailureError {
                         Map<String,String> stringMap = new HashMap<>();
 
-                        stringMap.put("c_id",getID);
+                        stringMap.put("s_id",getID);
                         Log.i("maivannan",""+getID);
 
 

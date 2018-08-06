@@ -5,6 +5,8 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +14,12 @@ import android.view.ViewGroup;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import sales_app.com.sales_app.adapters.productAdapter;
+import sales_app.com.sales_app.models.Product;
 
 
 /**
@@ -23,6 +31,10 @@ import android.widget.TextView;
  * create an instance of this fragment.
  */
 public class unAvailableGoods extends Fragment {
+    private List<Product> productList ;
+    private RecyclerView recyclerView12;
+    private productAdapter mAdapter;
+    View v;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -63,6 +75,16 @@ public class unAvailableGoods extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+        productList  = new ArrayList<>();
+        productList.add(new Product(1,"juice ","200","21","2"));
+        productList.add(new Product(2,"juice ","201","22","2"));
+        productList.add(new Product(3,"juice ","202","23","2"));
+        productList.add(new Product(4,"juice ","203","24","2"));
+        productList.add(new Product(4,"juice ","203","25","2"));
+        productList.add(new Product(6,"juice ","204","26","2"));
+        productList.add(new Product(7,"juice ","205","27","2"));
+
+        productList.add(new Product(10,"juice ","20","20","2"));
     }
 
     @Override
@@ -70,7 +92,14 @@ public class unAvailableGoods extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        return inflater.inflate(R.layout.fragment_un_available_goods, container, false);
+        v=inflater.inflate(R.layout.fragment_un_available_goods, container, false);
+        // Inflate the layout for this fragment
+        recyclerView12 =(RecyclerView)v.findViewById(R.id.productRecycleView3);
+        mAdapter = new productAdapter(productList,getContext());
+        recyclerView12.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerView12.setAdapter(mAdapter);
+
+        return v ;
     }
 
     // TODO: Rename method, update argument and hook method into UI event

@@ -28,7 +28,8 @@
             android:layout_height="wrap_content"
             android:cursorVisible="false"
 
-            android:hint="Username" />
+            android:hint="Username"
+            android:textColor="@android:color/background_dark" />
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout

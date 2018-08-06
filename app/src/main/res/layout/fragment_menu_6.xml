@@ -19,7 +19,7 @@
         tools:listitem="@layout/arealayout" />
 
     <TextView
-    android:id="@+id/createArea"
+    android:id="@+id/add_product_p"
     android:layout_width="0dp"
     android:layout_height="47dp"
     android:layout_marginTop="84dp"
@@ -43,9 +43,9 @@
 
         android:layout_marginTop="8dp"
         android:src="@mipmap/add"
-        app:layout_constraintBottom_toBottomOf="@+id/createArea"
-        app:layout_constraintStart_toStartOf="@+id/createArea"
-        app:layout_constraintTop_toTopOf="@+id/createArea"
+        app:layout_constraintBottom_toBottomOf="@+id/add_product_p"
+        app:layout_constraintStart_toStartOf="@+id/add_product_p"
+        app:layout_constraintTop_toTopOf="@+id/add_product_p"
         app:layout_constraintVertical_bias="1.0" />
 
 

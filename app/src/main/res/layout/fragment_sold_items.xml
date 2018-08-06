@@ -1,20 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout10"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".soldItems"
-    android:id="@+id/relativeLayout10">
+    tools:context=".soldItems">
 
     <!-- TODO: Update blank fragment layout -->
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/salesExRecycle"
+        android:id="@+id/productRecycleView2"
         android:layout_width="match_parent"
-        android:layout_height="467dp"
-        android:layout_marginBottom="16dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginStart="24dp"
+        android:layout_height="522dp"
         android:background="@color/white"
         android:scrollbars="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -26,7 +23,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
         tools:listitem="@layout/product_item" />
-
 
 
 </android.support.constraint.ConstraintLayout>
