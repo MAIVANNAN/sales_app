@@ -24,6 +24,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -81,6 +82,7 @@ public class addCustomers extends AppCompatActivity {
     private static final int PERMISSION_REQUEST_CODE = 1;
 
     TextView employeename;
+    TextView select_area1;
 
 
 
@@ -97,10 +99,9 @@ public class addCustomers extends AppCompatActivity {
         custphone=(TextInputEditText)findViewById(R.id.phone);
         custaddr=(TextInputEditText)findViewById(R.id.address);
         addbtn =(Button)findViewById(R.id.add_customer);
-
         employeename= (TextView) findViewById(R.id.area_id_cust);
-
-        spinner= (Spinner) findViewById(R.id.CustArea);
+        select_area1 =(TextView)findViewById(R.id.textView5);
+       /* spinner= (Spinner) findViewById(R.id.CustArea);
         arrayList = new ArrayList<String>();
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -113,7 +114,8 @@ public class addCustomers extends AppCompatActivity {
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
             }
-        });
+        });*/
+
         getdata();
 
 
