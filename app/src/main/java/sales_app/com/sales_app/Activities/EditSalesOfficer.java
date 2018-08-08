@@ -18,7 +18,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -45,9 +44,10 @@ import java.util.List;
 import java.util.Map;
 
 import sales_app.com.sales_app.R;
+import sales_app.com.sales_app.areadialog;
 import sales_app.com.sales_app.models.Area;
 
-public class EditSalesOfficer extends AppCompatActivity {
+public class EditSalesOfficer extends AppCompatActivity implements areadialog.ExampleDialogListener {
 
 
     private Spinner spinner;
@@ -70,6 +70,7 @@ public class EditSalesOfficer extends AppCompatActivity {
     private JSONArray area;
     String a_id;
     TextView employeename;
+    TextView select_area3;
 
 
 
@@ -89,7 +90,6 @@ public class EditSalesOfficer extends AppCompatActivity {
         exPasw = findViewById(R.id.EtSalesExPass);
 
 
-        spinner= (Spinner) findViewById(R.id.CustArea);
 
         Intent toy6001 = getIntent();
         Bundle bd = toy6001.getExtras();
@@ -118,22 +118,29 @@ public class EditSalesOfficer extends AppCompatActivity {
 
         }
 
-        EditSales = findViewById(R.id.btAddSalesEx);
-        employeename= (TextView) findViewById(R.id.area_id_cust);
-        arrayList = new ArrayList<String>();
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        EditSales = findViewById(R.id.btEditSalesEx);
+        employeename = findViewById(R.id.area_id_cust);
+        select_area3 =(TextView)findViewById(R.id.textView4);
+        select_area3.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                //Setting the values to textviews for a selected item
-                employeename.setText(getemployeeName(position));
-                a_id= (String) employeename.getText();
-
-            }
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
+            public void onClick(View view) {
+                openDialog();
             }
         });
-        getdata();
+
+        exMail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!checkPermission(wantPermission)) {
+                    requestPermission(wantPermission);
+
+                } else {
+                    selectGoogleDriveAccount();
+                }
+
+            }
+        });
+
         EditSales.setOnClickListener(new View.OnClickListener() {
 
             //String gender = radioGenderButton.getText().toString();
@@ -146,7 +153,7 @@ public class EditSalesOfficer extends AppCompatActivity {
                 String epass = exPasw.getText().toString();
                 String eaddr = exAddr.getText().toString();
                 String emob = exPhone.getText().toString();
-                String earea = a_id;
+                String earea = employeename.getText().toString();
                 String M_Id ;
                 String role="officer";
                 String so_id = getso_id;
@@ -188,6 +195,10 @@ public class EditSalesOfficer extends AppCompatActivity {
         });
 
 
+    }
+    public void openDialog(){
+        areadialog areadialog = new areadialog();
+        areadialog.show(getSupportFragmentManager(),"area");
     }
     public void signup(final String fname, final String email,final String mobile, final String address,final String Area ,final String password,final String dID,final String role,final String so_id){
         SharedPreferences LINK = getSharedPreferences("MAIN_LINK",0);
@@ -256,125 +267,7 @@ public class EditSalesOfficer extends AppCompatActivity {
         requestQueue.add(stringRequest);
 
     }
-    private void getdata() {
 
-
-
-        SharedPreferences LINK = getSharedPreferences("MAIN_LINK",0);
-        String link1 = LINK.getString("MAIN_LINK","");
-        Log.i("maivannan", "" + link1);
-        String URL_area_list = link1+"area_list.php";
-        Log.i("maivannan", "" + URL_area_list);
-
-
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_area_list, new Response.Listener<String>() {
-
-            public void onResponse(String response) {
-                Log.i("Hitesh",""+response);
-
-
-
-                try {
-
-
-                    JSONObject object = new JSONObject(response);
-                    JSONObject object1 = object.getJSONObject("area_list_response");
-                    Log.i("maivannan",""+object1);
-
-                    area  = object1.getJSONArray("area_list");
-
-
-
-
-
-
-
-
-
-                    empdetails(area);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
-
-
-            }
-        },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(getApplicationContext(),error.getMessage(),Toast.LENGTH_LONG).show();
-
-
-                    }
-                }){
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String,String> stringMap = new HashMap<>();
-
-                SharedPreferences manger_id = getSharedPreferences("manager_id",0);
-                String s_id = manger_id.getString("manager_id","");
-                stringMap.put("s_id",s_id);
-
-
-
-                return stringMap;
-            }
-        };
-
-        RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
-        requestQueue.add(stringRequest);
-
-
-
-    }
-
-
-    private void empdetails(JSONArray j) {
-        for (int i = 0; i < j.length(); i++) {
-            try {
-                JSONObject json = j.getJSONObject(i);
-                arrayList.add(json.getString("area_name"));
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-        }
-        // arrayList.add(0,"Select Employee");
-        spinner.setAdapter(new ArrayAdapter<String>(EditSalesOfficer.this, android.R.layout.simple_spinner_dropdown_item, arrayList));
-    }
-
-
-    private String getemployeeName(int position){
-        String name="";
-        try {
-            //Getting object of given index
-            JSONObject json = area.getJSONObject(position);
-            //Fetching name from that object
-            name = json.getString("a_id");
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        //Returning the name
-        return name;
-    }
 
 
 
@@ -533,6 +426,12 @@ public class EditSalesOfficer extends AppCompatActivity {
                 }
                 break;
         }
+    }
+    @Override
+    public void applyTexts(String area,String a_id) {
+        select_area3.setText(area);
+        employeename.setText(a_id);
+
     }
 
 

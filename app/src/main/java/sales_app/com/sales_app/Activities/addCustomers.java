@@ -15,48 +15,34 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
-import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
-import com.android.volley.RetryPolicy;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.firebase.iid.FirebaseInstanceId;
 
 import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import sales_app.com.sales_app.Fragments.Menu6;
-import sales_app.com.sales_app.Fragments.salesExDetails;
 import sales_app.com.sales_app.R;
-import sales_app.com.sales_app.adapters.areaAdapter;
+import sales_app.com.sales_app.areadialog;
 import sales_app.com.sales_app.models.Area;
 
-public class addCustomers extends AppCompatActivity {
+public class addCustomers extends AppCompatActivity implements areadialog.ExampleDialogListener {
     private Spinner spinner;
     private List<Area> areaList ;
 
@@ -98,9 +84,16 @@ public class addCustomers extends AppCompatActivity {
         custmail=(TextInputEditText)findViewById(R.id.salemail);
         custphone=(TextInputEditText)findViewById(R.id.phone);
         custaddr=(TextInputEditText)findViewById(R.id.address);
-        addbtn =(Button)findViewById(R.id.add_customer);
+        addbtn =(Button)findViewById(R.id.add_edit_cutomercustomer);
         employeename= (TextView) findViewById(R.id.area_id_cust);
         select_area1 =(TextView)findViewById(R.id.textView5);
+        select_area1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openDialog();
+            }
+        });
+
        /* spinner= (Spinner) findViewById(R.id.CustArea);
         arrayList = new ArrayList<String>();
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -116,7 +109,7 @@ public class addCustomers extends AppCompatActivity {
             }
         });*/
 
-        getdata();
+
 
 
 
@@ -136,7 +129,7 @@ public class addCustomers extends AppCompatActivity {
                 String cuser1 = custname.getText().toString();
                 String cmob = custphone.getText().toString();
                 String caddr =custaddr.getText().toString();
-                String c_aid = a_id;
+                String c_aid = employeename.getText().toString();
                 String crea_by="manager";
                 String crea_id;
                 String dId = FirebaseInstanceId.getInstance().getToken();
@@ -173,122 +166,11 @@ public class addCustomers extends AppCompatActivity {
 
         });
     }
-    private void getdata() {
-        SharedPreferences LINK = getSharedPreferences("MAIN_LINK",0);
-        String link1 = LINK.getString("MAIN_LINK","");
-        Log.i("maivannan", "" + link1);
-        String URL_area_list = link1+"area_list.php";
-        Log.i("maivannan", "" + URL_area_list);
-
-
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_area_list, new Response.Listener<String>() {
-
-            public void onResponse(String response) {
-                Log.i("Hitesh",""+response);
-
-
-
-                try {
-
-
-                    JSONObject object = new JSONObject(response);
-                    JSONObject object1 = object.getJSONObject("area_list_response");
-                    Log.i("maivannan",""+object1);
-
-                     area  = object1.getJSONArray("area_list");
-
-
-
-
-
-
-
-
-
-                        empdetails(area);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
-
-
-            }
-        },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(getApplicationContext(),error.getMessage(),Toast.LENGTH_LONG).show();
-
-
-                    }
-                }){
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String,String> stringMap = new HashMap<>();
-
-                SharedPreferences manger_id = getSharedPreferences("manager_id",0);
-                String s_id = manger_id.getString("manager_id","");
-                stringMap.put("s_id",s_id);
-
-
-
-                return stringMap;
-            }
-        };
-
-        RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
-        requestQueue.add(stringRequest);
-
-
-
+    public void openDialog(){
+        areadialog areadialog = new areadialog();
+        areadialog.show(getSupportFragmentManager(),"area");
     }
 
-
-    private void empdetails(JSONArray j) {
-        for (int i = 0; i < j.length(); i++) {
-            try {
-                JSONObject json = j.getJSONObject(i);
-                arrayList.add(json.getString("area_name"));
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-        }
-        // arrayList.add(0,"Select Employee");
-        spinner.setAdapter(new ArrayAdapter<String>(addCustomers.this, android.R.layout.simple_spinner_dropdown_item, arrayList));
-    }
-
-
-    private String getemployeeName(int position){
-        String name="";
-        try {
-            //Getting object of given index
-            JSONObject json = area.getJSONObject(position);
-            //Fetching name from that object
-            name = json.getString("a_id");
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        //Returning the name
-        return name;
-    }
 
 
 
@@ -498,8 +380,10 @@ public class addCustomers extends AppCompatActivity {
     }
 
 
+    @Override
+    public void applyTexts(String area,String a_id) {
+        select_area1.setText(area);
+        employeename.setText(a_id);
 
-
-
-
+    }
 }

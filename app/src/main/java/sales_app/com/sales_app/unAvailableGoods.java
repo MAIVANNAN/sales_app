@@ -159,8 +159,8 @@ public class unAvailableGoods extends Fragment {
 
                             String p_id = o1.getString("p_id");
                             String p_name = o1.getString("p_name");
-                            String price = o1.getString("price");
-                            String no_of_stock = o1.getString("no_of_stock");
+                            String price = "10";
+                            String no_of_stock = "10";
 
                             Product item = new Product(p_id,p_name,price,no_of_stock,s_id);
                             productList.add(item);
