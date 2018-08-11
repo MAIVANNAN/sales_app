@@ -19,22 +19,47 @@
 
 
         <android.support.design.widget.TextInputLayout
-            android:id="@+id/fname_label"
+            android:id="@+id/company_label"
             android:layout_width="0dp"
-            android:layout_height="66dp"
-            android:layout_marginTop="16dp"
-            android:paddingBottom="8dp"
+            android:layout_height="88dp"
+            android:layout_marginTop="76dp"
             android:background="@drawable/round_edit_text"
+            android:paddingBottom="8dp"
             app:errorEnabled="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toBottomOf="@+id/textView17">
+
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/companynamewrapper"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Company Name"
+                android:inputType="text"
+                android:paddingBottom="5dp"
+                android:textSize="20dp" />
+
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/fname_label"
+            android:layout_width="0dp"
+            android:layout_height="95dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/round_edit_text"
+            android:paddingBottom="8dp"
+            app:errorEnabled="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/company_label">
 
 
             <android.support.design.widget.TextInputEditText
                 android:id="@+id/firstnamewrapper"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:hint="First name"
                 android:inputType="text"
                 android:paddingBottom="5dp"
@@ -52,10 +77,10 @@
         <android.support.design.widget.TextInputLayout
             android:id="@+id/lnam_label"
             android:layout_width="0dp"
-            android:layout_height="58dp"
+            android:layout_height="94dp"
             android:layout_marginTop="32dp"
-            android:paddingBottom="3dp"
             android:background="@drawable/round_edit_text"
+            android:paddingBottom="3dp"
             app:errorEnabled="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -64,7 +89,7 @@
             <android.support.design.widget.TextInputEditText
                 android:id="@+id/lastnamewrapper"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:hint="Last name"
                 android:inputType="text" />
 
@@ -80,7 +105,7 @@
         <android.support.design.widget.TextInputLayout
             android:id="@+id/ema_label"
             android:layout_width="0dp"
-            android:layout_height="56dp"
+            android:layout_height="94dp"
             android:layout_marginTop="32dp"
             android:background="@drawable/round_edit_text"
             android:paddingBottom="3dp"
@@ -108,9 +133,9 @@
         <android.support.design.widget.TextInputLayout
             android:id="@+id/phon_label"
             android:layout_width="0dp"
-            android:layout_height="58dp"
-            android:background="@drawable/round_edit_text"
+            android:layout_height="98dp"
             android:layout_marginTop="32dp"
+            android:background="@drawable/round_edit_text"
             android:paddingBottom="3dp"
             app:errorEnabled="true"
             app:layout_constraintEnd_toEndOf="parent"
@@ -122,7 +147,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Phone"
-                android:inputType="phone" />
+                android:inputType="phone"
+                android:maxLength="10" />
 
 
         </android.support.design.widget.TextInputLayout>
@@ -137,7 +163,8 @@
             android:id="@+id/textview"
             android:layout_width="wrap_content"
             android:layout_height="25dp"
-            android:layout_marginTop="384dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="832dp"
             android:text="Gender"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -173,11 +200,12 @@
         <android.support.design.widget.TextInputLayout
             android:id="@+id/pass_label"
             android:layout_width="0dp"
-            android:layout_height="64dp"
-            android:layout_marginTop="84dp"
-            android:paddingBottom="3dp"
+            android:layout_height="102dp"
+            android:layout_marginTop="152dp"
             android:background="@drawable/round_edit_text"
+            android:paddingBottom="3dp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.25"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/phon_label"
             app:passwordToggleEnabled="true">
@@ -200,9 +228,9 @@
         <android.support.design.widget.TextInputLayout
             android:id="@+id/confirm_label"
             android:layout_width="0dp"
-            android:background="@drawable/round_edit_text"
-            android:layout_height="64dp"
+            android:layout_height="116dp"
             android:layout_marginTop="32dp"
+            android:background="@drawable/round_edit_text"
             android:paddingBottom="3dp"
             app:errorEnabled="true"
             app:layout_constraintEnd_toEndOf="parent"
@@ -232,6 +260,21 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/confirm_label" />
+            app:layout_constraintTop_toBottomOf="@+id/confirm_label"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <TextView
+            android:id="@+id/textView17"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="76dp"
+            android:fontFamily="serif"
+            android:text="Admin Registration"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
     </android.support.constraint.ConstraintLayout>
 </ScrollView>

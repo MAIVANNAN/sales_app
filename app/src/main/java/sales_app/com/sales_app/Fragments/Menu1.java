@@ -208,7 +208,7 @@ public class Menu1 extends Fragment  {
 
 
 
-                            salesOfficers item = new salesOfficers(s_id, so_name, so_phone, c_id, so_email, so_address, c_name);
+                            salesOfficers item = new salesOfficers(s_id, so_name, so_phone,so_address,so_email, c_id,c_name);
                             salesOfficersList.add(item);
                         }
                     }

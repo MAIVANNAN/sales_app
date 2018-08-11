@@ -2,12 +2,14 @@ package sales_app.com.sales_app.Activities;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v4.content.LocalBroadcastManager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -44,8 +46,11 @@ public class OtpActivity extends AppCompatActivity {
     public static final String PREFS_NAME1 = "success";
     SharedPreferences sp;
     SharedPreferences manager_id ;
-    String manger_id;
-    String success;
+    SharedPreferences comp_name;
+    SharedPreferences own_name;
+    SharedPreferences message;
+
+    String manger_id,company_name,owner_name;
 
 
 
@@ -57,8 +62,11 @@ public class OtpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_otp);
 
-        sp = getSharedPreferences("login",MODE_PRIVATE);
-
+        sp = getSharedPreferences("login", MODE_PRIVATE);
+        message = getSharedPreferences("message",MODE_PRIVATE);
+        manager_id = getSharedPreferences("manager_id",MODE_PRIVATE);
+        comp_name =getSharedPreferences("company_name",MODE_PRIVATE);
+        own_name =getSharedPreferences("owner_name",MODE_PRIVATE);
 
         tv = findViewById(R.id.verify_otp);
         //String OOOTTPP=tv.getText().toString();
@@ -68,8 +76,8 @@ public class OtpActivity extends AppCompatActivity {
         Bundle bd = intentOTP.getExtras();
         if (bd != null) {
             ONETP = (String) bd.get("OTP");
-            s_id=(String)bd.get("s_id");
-            Log.i("JSON OBJECT",""+s_id);
+            s_id = (String) bd.get("s_id");
+            Log.i("JSON OBJECT", "" + s_id);
 
 
         }
@@ -77,19 +85,37 @@ public class OtpActivity extends AppCompatActivity {
         tv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               if(otp.getText().toString().equals(ONETP)){
+                if (otp.getText().toString().equals(ONETP)) {
 
+                    message.edit().putString("message","success").apply();
 
                     signup(s_id);
 
 
-               }
+                } else {
 
+                    AlertDialog.Builder dlgAlert = new AlertDialog.Builder(getApplicationContext());
+
+                    dlgAlert.setMessage("wrong OTP");
+                    dlgAlert.setTitle("Error Message...");
+                    dlgAlert.setPositiveButton("OK", null);
+                    dlgAlert.setCancelable(true);
+                    dlgAlert.create().show();
+
+                    dlgAlert.setPositiveButton("Ok",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+
+
+                                }
+                            });
+
+
+                }
             }
         });
-
-
     }
+
     public void signup(final String s_id){
 
         SharedPreferences LINK = getSharedPreferences("MAIN_LINK",0);
@@ -113,15 +139,19 @@ public class OtpActivity extends AppCompatActivity {
                     JSONObject jsonObj = new JSONObject(jsonObj1.getString("otp_response"));
                     if(jsonObj.getString("errorcode").equals("47000")){
 
-                        manager_id = getSharedPreferences("manager_id",MODE_PRIVATE);
+
 
                         Log.i("AFTER OTP",""+jsonObj.getString("message"));
-                         success = jsonObj.getString("message");
+                         company_name =jsonObj.getString("company_name");
+                         owner_name = jsonObj.getString("Name");
                           manger_id = jsonObj.getString("s_id");
+
                         Log.i("Manager_id ",""+jsonObj.getString("s_id"));
 
-                        manager_id.edit().putString("manager_id", manger_id).apply();
 
+                        manager_id.edit().putString("manager_id", manger_id).apply();
+                        comp_name.edit().putString("company_name",company_name).apply();
+                        own_name.edit().putString("owner_name",owner_name).apply();
 
 
 
@@ -151,8 +181,9 @@ public class OtpActivity extends AppCompatActivity {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String,String> stringMap = new HashMap<>();
 
-
-                stringMap.put("otp_res","success");
+                SharedPreferences manger_id = getSharedPreferences("message",0);
+                String message = manger_id.getString("message","");
+                stringMap.put("otp_res",message);
                 stringMap.put("s_id",s_id);
                 sp.edit().putBoolean("logged",true).apply();
 
@@ -172,6 +203,8 @@ public class OtpActivity extends AppCompatActivity {
     }
     public void goToMainActivity () {
 
+        comp_name.edit().putString("company_name",company_name).apply();
+        own_name.edit().putString("owner_name",owner_name).apply();
         Intent i = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(i);
         finish();

@@ -19,6 +19,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -47,9 +48,12 @@ import android.view.View;
 import sales_app.com.sales_app.Activities.Addproduct;
 import sales_app.com.sales_app.Activities.Instock;
 import sales_app.com.sales_app.Activities.addSalesEx;
+import sales_app.com.sales_app.Activities.customerDetails;
+import sales_app.com.sales_app.Activities.productDetails;
 import sales_app.com.sales_app.adapters.productAdapter;
 import sales_app.com.sales_app.adapters.salesAdapter;
 import sales_app.com.sales_app.models.Product;
+import sales_app.com.sales_app.models.RecyclerTouchListener;
 import sales_app.com.sales_app.models.salesOfficers;
 
 import static android.content.Context.MODE_PRIVATE;
@@ -69,6 +73,7 @@ public class inStock extends Fragment {
     private productAdapter mAdapter;
     View v;
     TextView add_product;
+    ImageView details;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -139,13 +144,32 @@ public class inStock extends Fragment {
             }
         });
 
-
-
-
-
-
-
         recyclerView12 =(RecyclerView)v.findViewById(R.id.productRecycleView);
+
+        recyclerView12.addOnItemTouchListener(new RecyclerTouchListener(getActivity().getApplicationContext(), recyclerView12, new RecyclerTouchListener.ClickListener() {
+            @Override
+            public void onClick(View view, int position) {
+                Intent toy6002 = new Intent(getActivity().getApplicationContext(),productDetails.class);
+                toy6002.putExtra("PId",productList.get(position).getP_id());
+                toy6002.putExtra("PName",productList.get(position).getP_name());
+                toy6002.putExtra("PPrice",productList.get(position).getPrice());
+                toy6002.putExtra("Pstock",productList.get(position).getInstock());
+
+                startActivity(toy6002);
+            }
+
+            @Override
+            public void onLongClick(View view, int position) {
+
+            }
+        }));
+
+
+
+
+
+
+
         mAdapter = new productAdapter(productList,getContext());
         recyclerView12.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView12.setAdapter(mAdapter);

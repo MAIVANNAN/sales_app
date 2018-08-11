@@ -35,8 +35,8 @@ import sales_app.com.sales_app.Activities.RegistrationActivity;
 public class LoginActivity extends AppCompatActivity {
 
     //public static final String PREFS_NAME = "LoginPrefs";
-    public static String LINK =" http://29cbe00e.ngrok.io/php_login/";
-    public static String Sign_up_URL = LINK+"sm_login.php";
+    public static String LINK =" http://3b96e633.ngrok.io/php_login/";
+    public static String Sign_IN_URL = LINK+"sm_login.php";
     TextInputEditText username, password;
     TextInputLayout username_label, password_label;
     Button login;
@@ -46,6 +46,8 @@ public class LoginActivity extends AppCompatActivity {
 
     SharedPreferences sp;
     SharedPreferences manager_id;
+    SharedPreferences comp_name;
+    SharedPreferences own_name;
 
 
     @Override
@@ -68,6 +70,9 @@ public class LoginActivity extends AppCompatActivity {
 
         manager_id = getSharedPreferences("manager_id",MODE_PRIVATE);
         MAIN_LINK1 =getSharedPreferences("MAIN_LINK",MODE_PRIVATE);
+        comp_name =getSharedPreferences("company_name",MODE_PRIVATE);
+        own_name =getSharedPreferences("owner_name",MODE_PRIVATE);
+
 
 
 
@@ -138,7 +143,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
             RequestQueue requestQueue = Volley.newRequestQueue(LoginActivity.this);
-            StringRequest stringRequest = new StringRequest(Request.Method.POST, Sign_up_URL, new Response.Listener<String>() {
+            StringRequest stringRequest = new StringRequest(Request.Method.POST, Sign_IN_URL, new Response.Listener<String>() {
 
                 @Override
                 public void onResponse(String response) {
@@ -148,20 +153,26 @@ public class LoginActivity extends AppCompatActivity {
 
 
                         JSONObject object12 = new JSONObject(response);
+                        JSONObject object13 = object12.getJSONObject("sales_officers_login_response");
+
                         Log.i("maivannan12", "" + object12);
-                        if(object12.getString("errorcode").equals("47000")) {
+                        if(object13.getString("errorcode").equals("47000")) {
 
                             {
-                                String manger_id = object12.getString("s_id");
+                                String manger_id = object13.getString("s_id");
+                                String company_name = object13.getString("company_name");
+                                String owner_name = object13.getString("name");
                                 Log.i("String manager ID", "" + manger_id);
                                 manager_id.edit().putString("manager_id", manger_id).apply();
                                 MAIN_LINK1.edit().putString("MAIN_LINK",LINK).apply();
+                                comp_name.edit().putString("company_name",company_name).apply();
+                                own_name.edit().putString("owner_name",owner_name).apply();
                                 Log.i("LINK", "" + MAIN_LINK1);
 
                                 goToMainActivity();
 
 
-                                Log.i("JSON OBJECT manager ID", "" + object12.getString("s_id"));
+                                Log.i("JSON OBJECT manager ID", "" + object13.getString("s_id"));
                             }
 
                         }

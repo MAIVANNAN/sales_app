@@ -53,8 +53,8 @@ public class addCustomers extends AppCompatActivity implements areadialog.Exampl
     private static final int REQUEST_CODE_EMAIL =7;
 
 
-    private TextInputEditText custname,custmail,custphone,custaddr;
-    TextInputLayout sname_label,em_label,pho_label,add_label;
+    private TextInputEditText custname,custmail,custphone,custaddr,custGST;
+    TextInputLayout sname_label,em_label,pho_label,add_label,gst_label;
     Button addbtn;
     public static final String JSON_ARRAY = "area_list";
     private JSONArray area;
@@ -80,11 +80,14 @@ public class addCustomers extends AppCompatActivity implements areadialog.Exampl
         em_label=(TextInputLayout)findViewById(R.id.em_label);
         pho_label=(TextInputLayout)findViewById(R.id.pho_label);
         add_label=(TextInputLayout)findViewById(R.id.add_label);
+        gst_label=(TextInputLayout)findViewById(R.id.gst_label);
+
         custname=(TextInputEditText)findViewById(R.id.salname);
         custmail=(TextInputEditText)findViewById(R.id.salemail);
         custphone=(TextInputEditText)findViewById(R.id.phone);
         custaddr=(TextInputEditText)findViewById(R.id.address);
-        addbtn =(Button)findViewById(R.id.add_edit_cutomercustomer);
+        custGST =(TextInputEditText)findViewById(R.id.gst);
+        addbtn =(Button)findViewById(R.id.add_customer);
         employeename= (TextView) findViewById(R.id.area_id_cust);
         select_area1 =(TextView)findViewById(R.id.textView5);
         select_area1.setOnClickListener(new View.OnClickListener() {
@@ -132,18 +135,18 @@ public class addCustomers extends AppCompatActivity implements areadialog.Exampl
                 String c_aid = employeename.getText().toString();
                 String crea_by="manager";
                 String crea_id;
+                String c_gst = custGST.getText().toString();
                 String dId = FirebaseInstanceId.getInstance().getToken();
 
 
 
 
-                if (!validateSalesname() || !validateSalesemail() || !validateSalesadress() || !validateSalesphone() ) {
+                if (!validateSalesname() || !validateSalesemail() || !validateSalesadress() || !validateSalesphone()||!validateSalesGST() ) {
 
-                    Toast.makeText(addCustomers.this, "Fill all details", Toast.LENGTH_SHORT).show();
                 } else {
 
 
-                    signup(cuser1, cmob, caddr, cemail, c_aid, crea_by);
+                    signup(cuser1, cmob, caddr, cemail, c_aid, crea_by,c_gst);
                     SharedPreferences preferences = getSharedPreferences("Mypref", Context.MODE_PRIVATE);
 
                     SharedPreferences.Editor editor = preferences.edit();
@@ -153,6 +156,7 @@ public class addCustomers extends AppCompatActivity implements areadialog.Exampl
                     editor.putString("mobile", cmob);
                     editor.putString("address", caddr);
                     editor.putString("c_aid", c_aid);
+                    editor.putString("c_gst", c_gst);
 
                     editor.putString("crea_by", crea_by);
                     Log.i("Hitesh",""+dId);
@@ -179,7 +183,7 @@ public class addCustomers extends AppCompatActivity implements areadialog.Exampl
 
 
 
-    public void signup(final String fname, final String mobile, final String address, final String email , final String c_aid, final  String crea_by){
+    public void signup(final String fname, final String mobile, final String address, final String email , final String c_aid, final  String crea_by,final String c_gst){
         SharedPreferences LINK = getSharedPreferences("MAIN_LINK",0);
         String link1 = LINK.getString("MAIN_LINK","");
         Log.i("maivannan", "" + link1);
@@ -222,6 +226,7 @@ public class addCustomers extends AppCompatActivity implements areadialog.Exampl
                 Map<String,String> stringMap = new HashMap<>();
                 SharedPreferences manger_id = getSharedPreferences("manager_id",MODE_PRIVATE);
                 String crea_id = manger_id.getString("manager_id","");
+
                 stringMap.put("userEmail",email);
                 stringMap.put("name",fname);
                 stringMap.put("address",address);
@@ -229,6 +234,7 @@ public class addCustomers extends AppCompatActivity implements areadialog.Exampl
                 stringMap.put("a_id",c_aid);
                 stringMap.put("created_by",crea_by);
                 stringMap.put("creator_id",crea_id);
+                stringMap.put("gstnum",c_gst);
 
 
 
@@ -367,16 +373,19 @@ public class addCustomers extends AppCompatActivity implements areadialog.Exampl
         }
     }
 
-    public void Confirminput(View view)
+    private boolean validateSalesGST()
     {
-        if (!validateSalesname()|!validateSalesemail()|!validateSalesphone()|!validateSalesadress())
+        String SalesGST=custGST.getText().toString().trim();
+        if (SalesGST.isEmpty())
         {
-            return;
-        }else{
-
-
+            gst_label.setError(" address Field can't be empty");
+            return false;
         }
-
+        else
+        {
+            gst_label.setError(null);
+            return true;
+        }
     }
 
 

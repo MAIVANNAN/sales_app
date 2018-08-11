@@ -21,22 +21,25 @@
         <android.support.design.widget.TextInputLayout
             android:id="@+id/sname_label"
             android:layout_width="match_parent"
-            android:layout_height="59dp"
+            android:layout_height="83dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="80dp"
             android:background="@drawable/round_edit_text"
             app:errorEnabled="true"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toBottomOf="@+id/textView19">
+
 
             <android.support.design.widget.TextInputEditText
                 android:id="@+id/salname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Name"
+
                 android:inputType="text"
                 android:maxLines="1" />
         </android.support.design.widget.TextInputLayout>
@@ -44,7 +47,7 @@
         <android.support.design.widget.TextInputLayout
             android:id="@+id/em_label"
             android:layout_width="match_parent"
-            android:layout_height="59dp"
+            android:layout_height="96dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="24dp"
@@ -58,7 +61,7 @@
             <android.support.design.widget.TextInputEditText
                 android:id="@+id/salemail"
                 android:layout_width="match_parent"
-                android:layout_height="47dp"
+                android:layout_height="59dp"
 
                 android:hint="E-mail"
                 android:inputType="textEmailAddress"
@@ -68,7 +71,7 @@
         <android.support.design.widget.TextInputLayout
             android:id="@+id/pho_label"
             android:layout_width="match_parent"
-            android:layout_height="58dp"
+            android:layout_height="98dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="24dp"
@@ -84,14 +87,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Phone"
+
                 android:inputType="phone"
+                android:maxLength="10"
                 android:maxLines="1" />
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/add_label"
             android:layout_width="match_parent"
-            android:layout_height="52dp"
+            android:layout_height="92dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="24dp"
@@ -108,12 +113,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Address"
+
                 android:inputType="text"
                 android:maxLines="1" />
         </android.support.design.widget.TextInputLayout>
 
         <Button
-            android:id="@+id/add_edit_cutomercustomer"
+            android:id="@+id/add_customer"
             android:layout_width="0dp"
             android:layout_height="47dp"
             android:layout_marginLeft="8dp"
@@ -133,8 +139,8 @@
             android:id="@+id/textView2"
             android:layout_width="62dp"
             android:layout_height="31dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="468dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="768dp"
             android:text="Area"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -143,7 +149,7 @@
         <android.support.design.widget.TextInputLayout
             android:id="@+id/gst_label"
             android:layout_width="0dp"
-            android:layout_height="56dp"
+            android:layout_height="94dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="24dp"
@@ -157,6 +163,7 @@
                 android:id="@+id/gst"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+
                 android:hint="GST number" />
         </android.support.design.widget.TextInputLayout>
 
@@ -167,7 +174,6 @@
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="128dp"
-            android:text="TextView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/gst_label" />
@@ -181,12 +187,29 @@
             android:layout_marginStart="80dp"
             android:layout_marginTop="8dp"
             android:text="Click to Select Area "
-            app:layout_constraintBottom_toTopOf="@+id/add_edit_cutomercustomer"
+            app:layout_constraintBottom_toTopOf="@+id/add_customer"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/textView2"
             app:layout_constraintTop_toBottomOf="@+id/gst_label"
             app:layout_constraintVertical_bias="1.0" />
+
+        <TextView
+            android:id="@+id/textView19"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="32dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="32dp"
+            android:fontFamily="serif"
+            android:text="Add Customer Details"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toTopOf="@+id/sname_label"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.461"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
     </android.support.constraint.ConstraintLayout>

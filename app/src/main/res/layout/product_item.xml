@@ -51,15 +51,41 @@
             android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/quantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+
+
+            android:layout_alignTop="@+id/Instock_item"
+            android:layout_marginStart="129dp"
+            android:text=" Stocks"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+
+        <TextView
+            android:id="@+id/textview100"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_alignStart="@+id/price_item"
+            android:layout_alignTop="@+id/Product_name"
+            android:fontFamily="monospace"
+            android:text="price"
+            android:textColor="#cb0000"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <TextView
             android:id="@+id/price_item"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            android:layout_marginEnd="70dp"
+            android:layout_toStartOf="@+id/Details_P"
+
             android:fontFamily="monospace"
             android:text="Line 3"
-
             android:textColor="@android:color/black"
             android:textSize="14sp"
             android:textStyle="bold" />
@@ -77,12 +103,6 @@
             android:padding="2dp"
             android:src="@mipmap/details_round"
             app:srcCompat="@drawable/ic_error_outline_black_24dp" />
-
-
-
-
-
-
 
 
     </RelativeLayout>

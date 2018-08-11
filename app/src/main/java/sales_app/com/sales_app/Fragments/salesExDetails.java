@@ -45,7 +45,6 @@ public class salesExDetails extends AppCompatActivity{
         TextView salesExPhone = findViewById(R.id.phonenumSales);
         TextView salesExArea = findViewById(R.id.AreaSales);
         TextView salesExAddress = findViewById(R.id.addressSales);
-
         TextView salesExpassword = findViewById(R.id.passwordSales);
         salesEditBtn=findViewById(R.id.salesEdit);
         delButton=findViewById(R.id.salesDelete);
@@ -70,6 +69,7 @@ public class salesExDetails extends AppCompatActivity{
             salesExEmail.setText(getEmail);
             salesExPhone.setText(getPhone);
             salesExAddress.setText(getAddress);
+            salesExArea.setText(getArea);
             salesExpassword.setText(getPassword);
 
 

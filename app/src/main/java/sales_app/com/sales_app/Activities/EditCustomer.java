@@ -50,8 +50,8 @@ public class EditCustomer extends AppCompatActivity implements areadialog.Exampl
     private ArrayList<String> arrayList;
 
 
-    TextInputEditText custname,custmail,custphone,custaddr;
-    TextInputLayout sname_label,em_label,pho_label,add_label;
+    TextInputEditText custname,custmail,custphone,custaddr,custGST;
+    TextInputLayout sname_label,em_label,pho_label,add_label,gst_label;
 
     Button custEditBtn,delButton;
     private static final int REQUEST_CODE_EMAIL =7;
@@ -64,7 +64,7 @@ public class EditCustomer extends AppCompatActivity implements areadialog.Exampl
     private Activity activity = EditCustomer.this;
     private static final int PERMISSION_REQUEST_CODE = 1;
 
-    String getName,getEmail,getPhone,getAddress,getArea,getC_id;
+    String getName,getEmail,getPhone,getAddress,getArea,getC_id,getGST;
 
 
     public static final String JSON_ARRAY = "area_list";
@@ -89,7 +89,8 @@ public class EditCustomer extends AppCompatActivity implements areadialog.Exampl
         custphone=(TextInputEditText)findViewById(R.id.phone);
         custaddr=(TextInputEditText)findViewById(R.id.address);
         custEditBtn =(Button)findViewById(R.id.edit_cutomer);
-
+        gst_label=(TextInputLayout)findViewById(R.id.gst_label);
+        custGST = findViewById(R.id.gst);
 
         Intent toy6001 = getIntent();
         Bundle bd = toy6001.getExtras();
@@ -103,11 +104,13 @@ public class EditCustomer extends AppCompatActivity implements areadialog.Exampl
             getAddress = (String) bd.get("custIAddress");
             getArea = (String) bd.get("custIPassword");
             getC_id=(String)bd.get("custId") ;
+            getGST = (String)bd.get("custGST");
 
             custname.setText(getName);
             custmail.setText(getEmail);
             custphone.setText(getPhone);
             custaddr.setText(getAddress);
+            custGST.setText(getGST);
 
 
 
@@ -143,17 +146,18 @@ public class EditCustomer extends AppCompatActivity implements areadialog.Exampl
                 String caddr =custaddr.getText().toString();
                 String c_aid= employeename.getText().toString() ;
                 String c_id=getC_id;
+                String c_gst = custGST.getText().toString();
 
 
 
 
-                if (!validateSalesname() || !validateSalesemail() || !validateSalesadress() || !validateSalesphone() ) {
+                if (!validateSalesname() || !validateSalesemail() || !validateSalesadress() || !validateSalesphone() ||!validateSalesGST() ) {
 
                     Toast.makeText(EditCustomer.this, "Fill all details", Toast.LENGTH_SHORT).show();
                 } else {
 
 
-                    edit(cuser1, cmob, caddr, cemail, c_aid,c_id);
+                    edit(cuser1, cmob, caddr, cemail, c_aid,c_id,c_gst);
                     SharedPreferences preferences = getSharedPreferences("Mypref", Context.MODE_PRIVATE);
 
                     SharedPreferences.Editor editor = preferences.edit();
@@ -164,6 +168,8 @@ public class EditCustomer extends AppCompatActivity implements areadialog.Exampl
                     editor.putString("address", caddr);
                     editor.putString("a_id", c_aid);
                     editor.putString("c_id", c_id);
+                    editor.putString("c_gst", c_gst);
+
 
                     editor.commit();
 
@@ -187,7 +193,7 @@ public class EditCustomer extends AppCompatActivity implements areadialog.Exampl
 
 
 
-    public void edit(final String fname, final String mobile, final String address, final String email , final String c_aid, final String c_id){
+    public void edit(final String fname, final String mobile, final String address, final String email , final String c_aid, final String c_id,final String c_gst){
 
 
 
@@ -239,6 +245,8 @@ public class EditCustomer extends AppCompatActivity implements areadialog.Exampl
                 stringMap.put("phone",mobile);
                 stringMap.put("a_id",c_aid);
                 stringMap.put("c_id",c_id);
+                stringMap.put("gstnum",c_gst);
+
 
 
 
@@ -312,6 +320,21 @@ public class EditCustomer extends AppCompatActivity implements areadialog.Exampl
         else
         {
             add_label.setError(null);
+            return true;
+        }
+    }
+
+    private boolean validateSalesGST()
+    {
+        String SalesGST=custGST.getText().toString().trim();
+        if (SalesGST.isEmpty())
+        {
+            gst_label.setError(" address Field can't be empty");
+            return false;
+        }
+        else
+        {
+            gst_label.setError(null);
             return true;
         }
     }

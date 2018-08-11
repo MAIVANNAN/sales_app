@@ -200,7 +200,7 @@ public class Addproduct extends AppCompatActivity {
         String Salesname=gname.getText().toString().trim();
         if (Salesname.isEmpty())
         {
-            gname_label.setError("Name Field can't be empty");
+            gname_label.setError(" Product Name Field can't be empty");
             return false;
         }
         else
@@ -214,12 +214,12 @@ public class Addproduct extends AppCompatActivity {
         String Salesemail=instock.getText().toString().trim();
         if (Salesemail.isEmpty())
         {
-            stock_label.setError("Email Field can't be empty");
+            price_label.setError("Stock Field can't be empty");
             return false;
         }
         else
         {
-            stock_label.setError(null);
+            price_label.setError(null);
             return true;
         }
     }
@@ -228,12 +228,12 @@ public class Addproduct extends AppCompatActivity {
         String Salesphone=price.getText().toString().trim();
         if (Salesphone.isEmpty())
         {
-            price_label.setError("Phone number Field can't be empty");
+            stock_label.setError("Price Field can't be empty");
             return false;
         }
         else
         {
-            price_label.setError(null);
+            stock_label.setError(null);
             return true;
         }
     }

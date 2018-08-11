@@ -120,6 +120,7 @@ public class Menu2 extends Fragment implements SearchView.OnQueryTextListener {
                 toy6002.putExtra("custIPhone",customerList.get(position).getPhonenum());
                 toy6002.putExtra("custIAddress",customerList.get(position).getAddress());
                 toy6002.putExtra("custIArea",customerList.get(position).getArea());
+                toy6002.putExtra("custGST",customerList.get(position).getGST_number());
                 startActivity(toy6002);
             }
 
@@ -188,9 +189,11 @@ public class Menu2 extends Fragment implements SearchView.OnQueryTextListener {
                             String c_email = o1.getString("c_email");
                             String a_id = o1.getString("a_id");
                             String area_name = o1.getString("area_name");
+                            String GST = o1.getString("GST_number");
 
 
-                            Customer item = new Customer(c_id, c_name, c_address, c_phone, c_email, a_id, area_name);
+
+                            Customer item = new Customer(c_id, c_name, c_address, c_phone, c_email, a_id, area_name,GST);
                             customerList.add(item);
 
                         }

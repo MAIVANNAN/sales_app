@@ -68,7 +68,7 @@ public class addSalesEx extends AppCompatActivity implements areadialog.ExampleD
 
 
     private EditText exName, exMail, exPhone, exArea, exPasw,exAddr;
-    private TextInputLayout exName_label,exEmail_label,exPh_label,exArea_label,exPass_label;
+    private TextInputLayout exName_label,exEmail_label,exPh_label,exArea_label,exPass_label,exaddr_label;
     protected Button AddSales;
 
 
@@ -87,6 +87,8 @@ public class addSalesEx extends AppCompatActivity implements areadialog.ExampleD
         exEmail_label=findViewById(R.id.exEmail_label);
         exPh_label=findViewById(R.id.exPh_label);
         exPass_label=findViewById(R.id.exPass_label);
+        exaddr_label=findViewById(R.id.add_label);
+
         exName = findViewById(R.id.EtSalesExName);
         exMail = findViewById(R.id.EtSalesExEmail);
         exPhone = findViewById(R.id.EtSalesExPh);
@@ -140,7 +142,7 @@ public class addSalesEx extends AppCompatActivity implements areadialog.ExampleD
 
 
 
-            if (!validateSalesphone()||!validateSalespass()||!validateSalesname()||!validateSalesemail()) {
+            if (!validateSalesname()||!validateSalesemail()||!validateSalesAddr()||!validateSalesphone()||validateSalespass()) {
 
                 Toast.makeText(addSalesEx.this, "Fill all details", Toast.LENGTH_SHORT).show();
             } else {
@@ -269,6 +271,8 @@ public class addSalesEx extends AppCompatActivity implements areadialog.ExampleD
             if (Name.isEmpty())
             {
                 exName_label.setError("Name Field can't be empty");
+                Toast.makeText(addSalesEx.this, "please enter your name ", Toast.LENGTH_SHORT).show();
+
                 return false;
             }
             else
@@ -278,6 +282,23 @@ public class addSalesEx extends AppCompatActivity implements areadialog.ExampleD
             }
         }
 
+    private boolean validateSalesAddr()
+    {
+        String Name1 = exAddr.getText().toString().trim();
+        if (Name1.isEmpty())
+        {
+            exAddr.setError("address Field can't be empty");
+            Toast.makeText(addSalesEx.this, "please enter your address ", Toast.LENGTH_SHORT).show();
+
+            return false;
+        }
+        else
+        {
+            exAddr.setError(null);
+            return true;
+        }
+    }
+
     private boolean validateSalesemail()
     {
         String Email = exMail.getText().toString().trim();
@@ -285,6 +306,8 @@ public class addSalesEx extends AppCompatActivity implements areadialog.ExampleD
         if (Email.isEmpty())
         {
             exEmail_label.setError("Email Field can't be empty");
+            Toast.makeText(addSalesEx.this, "please enter your email address ", Toast.LENGTH_SHORT).show();
+
             return false;
         }
         else
@@ -300,6 +323,8 @@ public class addSalesEx extends AppCompatActivity implements areadialog.ExampleD
         if (phone.isEmpty())
         {
             exPh_label.setError("phone number Field can't be empty");
+            Toast.makeText(addSalesEx.this, "please enter your phone number ", Toast.LENGTH_SHORT).show();
+
             return false;
         }
         else
@@ -314,6 +339,8 @@ public class addSalesEx extends AppCompatActivity implements areadialog.ExampleD
 
         if (pass.isEmpty()) {
             exPass_label.setError("password Field can't be empty");
+            Toast.makeText(addSalesEx.this, "please enter your password ", Toast.LENGTH_SHORT).show();
+
             return false;
         } else {
             exPass_label.setError(null);

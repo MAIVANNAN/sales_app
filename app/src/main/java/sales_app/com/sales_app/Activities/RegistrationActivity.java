@@ -84,8 +84,10 @@ public class RegistrationActivity extends AppCompatActivity {
     private TextInputEditText email;
     private TextInputEditText phone;
     private TextInputEditText password;
+    private TextInputEditText company_name;
+
     private TextInputEditText confirmpassword;
-    TextInputLayout fname_label,lnam_label,ema_label,phon_label,pass_label,confirm_label;
+    TextInputLayout fname_label,lnam_label,ema_label,phon_label,pass_label,confirm_label,company_label;
     String selectWay;
 
 
@@ -108,6 +110,8 @@ public class RegistrationActivity extends AppCompatActivity {
         phon_label = (TextInputLayout) findViewById(R.id.phon_label);
         pass_label = (TextInputLayout) findViewById(R.id.pass_label);
         confirm_label = (TextInputLayout) findViewById(R.id.confirm_label);
+        company_label = (TextInputLayout) findViewById(R.id.company_label);
+
         fname = (TextInputEditText) findViewById(R.id.firstnamewrapper);
         lname = (TextInputEditText) findViewById(R.id.lastnamewrapper);
         email = (TextInputEditText) findViewById(R.id.emailwrapper);
@@ -117,6 +121,7 @@ public class RegistrationActivity extends AppCompatActivity {
         phone = (TextInputEditText) findViewById(R.id.phonewrapper);
         password = (TextInputEditText) findViewById(R.id.passwordwrapper);
         confirmpassword = (TextInputEditText) findViewById(R.id.confirmpasswordwrapper);
+        company_name = (TextInputEditText) findViewById(R.id.companynamewrapper);
         signupbtn = findViewById(R.id.signUp);
         radioSexGroup = (RadioGroup) findViewById(R.id.radioSex);
         //radioGenderGroup =  findViewById(R.id.radioGender);
@@ -169,6 +174,7 @@ public class RegistrationActivity extends AppCompatActivity {
                 String spass = password.getText().toString();
                 String sgender = selectWay;
                 String smob = phone.getText().toString();
+                String comp = company_name.getText().toString();
 
                 String dId = FirebaseInstanceId.getInstance().getToken();
 
@@ -181,7 +187,7 @@ public class RegistrationActivity extends AppCompatActivity {
                 } else {
 
 
-                    signup(suser1, suser2, semail, smob, sgender, spass, dId);
+                    signup(suser1, suser2, semail, smob, sgender, spass, dId,comp);
                     SharedPreferences preferences = getSharedPreferences("Mypref", Context.MODE_PRIVATE);
 
                     SharedPreferences.Editor editor = preferences.edit();
@@ -194,6 +200,7 @@ public class RegistrationActivity extends AppCompatActivity {
                     editor.putString("password", spass);
                     editor.putString("dId", dId);
                     editor.putString("role", "manager");
+                    editor.putString("comp", comp);
 
                     Log.i("Hitesh",""+dId);
 
@@ -229,7 +236,7 @@ public class RegistrationActivity extends AppCompatActivity {
     }
 
 
-    public void signup(final String fname, final String lname,final String email, final String phone,final String gender ,final String password,final  String dID){
+    public void signup(final String fname, final String lname,final String email, final String phone,final String gender ,final String password,final  String dID,final String comp){
 
         SharedPreferences LINK = getSharedPreferences("MAIN_LINK",0);
         String link1 = LINK.getString("MAIN_LINK","");
@@ -299,6 +306,8 @@ public class RegistrationActivity extends AppCompatActivity {
                 stringMap.put("phone",phone);
                 stringMap.put("device_id",dID);
                 stringMap.put("role","manager");
+                stringMap.put("company_name",comp);
+
 
                 Log.i("maivannan",""+dID);
 
@@ -543,11 +552,18 @@ public class RegistrationActivity extends AppCompatActivity {
     }
 
     private boolean validateConfirmpassword() {
+        String Password = password.getText().toString().trim();
         String Confirmpassword = confirmpassword.getText().toString().trim();
         if (Confirmpassword.isEmpty()) {
             confirm_label.setError("Field can't be empty");
             return false;
-        } else {
+        }
+        if(!(Confirmpassword.equals(Password))){
+            confirm_label.setError("Password does not match");
+            return false;
+
+        }
+        else  {
             confirm_label.setError(null);
             return true;
         }

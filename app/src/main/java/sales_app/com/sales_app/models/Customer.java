@@ -3,12 +3,12 @@ package sales_app.com.sales_app.models;
 public class Customer {
     private String C_id;
 
-    private String C_Name, C_address,area,C_phonenum,C_Email,a_id;
+    private String C_Name, C_address,area,C_phonenum,C_Email,a_id,GST_number;
 
     public Customer() {
     }
 
-    public Customer(String C_id,String Name,String address,String Phonenum, String Email, String a_id ,String area ) {
+    public Customer(String C_id,String Name,String address,String Phonenum, String Email, String a_id ,String area ,String GST_number) {
 
         this.C_id=C_id;
         this.C_Name = Name;
@@ -17,6 +17,7 @@ public class Customer {
         this.C_phonenum = Phonenum;
         this.area=area;
         this.a_id=a_id;
+        this.GST_number=GST_number;
 
 
 
@@ -77,5 +78,13 @@ public class Customer {
 
     public void setA_id(String a_id) {
         this.a_id = a_id;
+    }
+
+    public String getGST_number() {
+        return GST_number;
+    }
+
+    public void setGST_number(String GST_number) {
+        this.GST_number = GST_number;
     }
 }

@@ -21,13 +21,14 @@
         <android.support.design.widget.TextInputLayout
             android:id="@+id/exName_label"
             android:layout_width="match_parent"
-            android:layout_height="59dp"
+            android:layout_height="81dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="148dp"
             android:background="@drawable/round_edit_text"
             app:errorEnabled="true"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -44,7 +45,7 @@
         <android.support.design.widget.TextInputLayout
             android:id="@+id/exEmail_label"
             android:layout_width="match_parent"
-            android:layout_height="59dp"
+            android:layout_height="89dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="24dp"
@@ -68,7 +69,7 @@
         <android.support.design.widget.TextInputLayout
             android:id="@+id/exPh_label"
             android:layout_width="match_parent"
-            android:layout_height="58dp"
+            android:layout_height="84dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="24dp"
@@ -85,13 +86,14 @@
                 android:layout_height="wrap_content"
                 android:hint="Phone"
                 android:inputType="phone"
+                android:maxLength="10"
                 android:maxLines="1" />
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/add_label"
             android:layout_width="match_parent"
-            android:layout_height="52dp"
+            android:layout_height="84dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="24dp"
@@ -134,7 +136,7 @@
             android:layout_width="62dp"
             android:layout_height="31dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="460dp"
+            android:layout_marginTop="720dp"
             android:text="Area"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -143,7 +145,7 @@
         <android.support.design.widget.TextInputLayout
             android:id="@+id/exPass_label"
             android:layout_width="0dp"
-            android:layout_height="56dp"
+            android:layout_height="89dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="24dp"
@@ -164,13 +166,11 @@
             android:id="@+id/area_id_cust"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="32dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="560dp"
-            android:text="TextView"
-            app:layout_constraintBottom_toTopOf="@+id/btEditSalesEx"
+            android:layout_marginTop="784dp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -189,6 +189,22 @@
             app:layout_constraintStart_toEndOf="@+id/textView2"
             app:layout_constraintTop_toBottomOf="@+id/exPass_label"
             app:layout_constraintVertical_bias="0.382" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="232dp"
+            android:layout_height="41dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="serif"
+            android:text="Enter Sales Officer Details"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/exName_label"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
     </android.support.constraint.ConstraintLayout>

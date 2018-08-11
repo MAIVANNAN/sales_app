@@ -58,7 +58,6 @@ public class addArea extends AppCompatActivity {
 
                 if (!validateSalesname() ) {
 
-                    Toast.makeText(addArea.this, "Fill all details", Toast.LENGTH_SHORT).show();
                 } else {
 
 

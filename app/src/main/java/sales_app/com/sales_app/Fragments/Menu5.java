@@ -63,6 +63,10 @@ public class Menu5 extends Fragment implements inStock.OnFragmentInteractionList
         super.onViewCreated(view, savedInstanceState);
         //you can set the title for your toolbar here for different fragments different titles
         getActivity().setTitle("Product Details");
+
+
+
+
         TabLayout tabLayout = (TabLayout)view.findViewById(R.id.tablelayout);
         tabLayout.addTab(tabLayout.newTab().setText("inStock"));
         tabLayout.addTab(tabLayout.newTab().setText("soldItems"));

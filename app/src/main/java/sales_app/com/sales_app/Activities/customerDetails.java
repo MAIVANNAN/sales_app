@@ -39,7 +39,7 @@ public class customerDetails extends AppCompatActivity {
     private TextView custName,custEmail,custPhone,custAddress;
     TextView custArea1;
     Button custEditBtn,delButton;
-    String getName,getEmail,getPhone,getAddress,getArea;
+    String getName,getEmail,getPhone,getAddress,getArea,getGST;
     String getC_id;
 
     @Override
@@ -70,6 +70,7 @@ public class customerDetails extends AppCompatActivity {
              getAddress = (String) bd.get("custIAddress");
              getArea = (String) bd.get("custIArea");
              getC_id=(String)bd.get("custId") ;
+             getGST = (String)bd.get("custGST");
 
 
 
@@ -78,6 +79,7 @@ public class customerDetails extends AppCompatActivity {
             custPhone.setText(getPhone);
             custArea1.setText(getArea);
             custAddress.setText(getAddress);
+
 
 
         }
@@ -91,6 +93,8 @@ public class customerDetails extends AppCompatActivity {
                 intent.putExtra("custIPhone",getPhone);
                 intent.putExtra("custIAddress",getAddress);
                 intent.putExtra("custIArea",getArea);
+                intent.putExtra("custGST",getGST);
+
                 startActivity(intent);
                 finish();
 

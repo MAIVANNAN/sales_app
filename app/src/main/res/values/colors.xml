@@ -2,9 +2,11 @@
 <resources>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#757575</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent">#f4008a</color>
     <color name="phonenum">#999999</color>
     <color name="Name">#222222</color>
     <color name="mtrl_textinput_default_box_stroke_color">#fff</color>
+    <color name="black">#222222</color>
+
 
 </resources>

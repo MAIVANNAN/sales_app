@@ -18,6 +18,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import sales_app.com.sales_app.Fragments.Menu1;
 import sales_app.com.sales_app.Fragments.Menu2;
@@ -36,14 +37,21 @@ public class MainActivity extends AppCompatActivity
     public static final String PREFS_NAME1 = "login";
 
     SharedPreferences sharedpreferences;
-
-
+    TextView company_name;
+    View v;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        SharedPreferences comap_name = getSharedPreferences("company_name",0);
+        SharedPreferences owner_name = getSharedPreferences("owner_name",0);
+
+        String c_name = comap_name.getString("company_name","");
+        String o_name = owner_name.getString("owner_name","");
+
 
 
 
@@ -56,6 +64,14 @@ public class MainActivity extends AppCompatActivity
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        View header = navigationView.getHeaderView(0);
+        TextView text1 = (TextView) header.findViewById(R.id.orange);
+        text1.setText(c_name);
+
+        TextView text = (TextView) header.findViewById(R.id.textView);
+        text.setText(o_name);
+
+
         navigationView.setNavigationItemSelectedListener(this);
         displaySelectedScreen(R.id.nav_menu1);
     }
@@ -131,8 +147,13 @@ public class MainActivity extends AppCompatActivity
 
                 SharedPreferences manger_id2 = getSharedPreferences(PREFS_NAME,0);
                 SharedPreferences sp = getSharedPreferences(PREFS_NAME1, 0);
+                SharedPreferences comap_name = getSharedPreferences("company_name",MODE_PRIVATE);
+                SharedPreferences owner_name = getSharedPreferences("owner_name",MODE_PRIVATE);
+
                 sp.edit().putBoolean("logged",false).apply();
                 manger_id2.edit().putString("manager_id","0").apply();
+                comap_name.edit().putString("company_name","0").apply();
+                owner_name.edit().putString("owner_name","0").apply();
 
 
                 fragment =new Menu8();
